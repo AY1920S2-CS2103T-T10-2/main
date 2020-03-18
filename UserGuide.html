@@ -155,7 +155,7 @@ Format: <code>exit</code></p>
 <h4 id="adding-a-deck-code-add-deck-code"><a class="link" href="#adding-a-deck-code-add-deck-code">3.2.1. Adding a deck: <code>add deck</code></a></h4>
 <div class="paragraph">
 <p>Creates a new deck to be added to the library.
-Format: <code>add deck n/TITLE [t/TAG]…</code></p>
+Format: <code>add deck d/TITLE [t/TAG]…</code></p>
 </div>
 <div class="paragraph">
 <p>A deck can have any number of tags (including 0)</p>
@@ -166,11 +166,11 @@ Format: <code>add deck n/TITLE [t/TAG]…</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/cs2103T</code><br>
+<p><code>add d/cs2103T</code><br>
 Returns a new deck titled <code>cs2103T</code></p>
 </li>
 <li>
-<p><code>add n/cs1101s t/Hard t/CS</code><br>
+<p><code>add d/cs1101s t/Hard t/CS</code><br>
 Returns a new deck titled <code>cs1101s</code> with the tags <code>Hard</code> and <code>CS</code></p>
 </li>
 </ul>
@@ -180,7 +180,7 @@ Returns a new deck titled <code>cs1101s</code> with the tags <code>Hard</code> a
 <h4 id="adding-a-card-code-add-card-code"><a class="link" href="#adding-a-card-code-add-card-code">3.2.2. Adding a card: <code>add card</code></a></h4>
 <div class="paragraph">
 <p>Creates a new card to be added to the deck.
-Format: <code>add card n/DECK_TITLE n/CARD_TYPE</code></p>
+Format: <code>add card c/DECK_TITLE n/CARD_TYPE</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -210,7 +210,7 @@ Format: <code>add card n/DECK_TITLE n/CARD_TYPE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add card n/cs1101s n/MCQ</code><br>
+<p><code>add card c/cs1101s n/MCQ</code><br>
 Returns a new card belonging to the deck <code>cs1101s</code> and of the type <code>MCQ</code></p>
 </li>
 </ul>
@@ -223,7 +223,7 @@ Returns a new card belonging to the deck <code>cs1101s</code> and of the type <c
 <h4 id="editing-a-deck-code-edit-deck-code"><a class="link" href="#editing-a-deck-code-edit-deck-code">3.3.1. Editing a deck: <code>edit deck</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing deck in the library.
-Format: <code>edit deck INDEX [ n/TITLE] [t/TAG]…</code></p>
+Format: <code>edit deck INDEX [d/TITLE] [t/TAG]…</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -250,11 +250,11 @@ Format: <code>edit deck INDEX [ n/TITLE] [t/TAG]…</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 n/cs2103T</code><br>
+<p><code>edit 1 d/cs2103T</code><br>
 Edits the title of the 1st deck to be <code>cs2103T</code>.</p>
 </li>
 <li>
-<p><code>edit 2 n/cs2040 t/</code><br>
+<p><code>edit 2 d/cs2040 t/</code><br>
 Edits the title of the 2nd deck to be <code>cs2040</code> and clears all existing tags.</p>
 </li>
 </ul>
@@ -332,7 +332,7 @@ Format: <code>clear decks</code></p>
 <h4 id="clearing-all-cards-in-a-deck-code-clear-cards-code"><a class="link" href="#clearing-all-cards-in-a-deck-code-clear-cards-code">3.5.2. Clearing all cards in a deck: <code>clear cards</code></a></h4>
 <div class="paragraph">
 <p>Clears all the cards from the specified deck.
-Format: <code>clear cards n/DECK_TITLE</code></p>
+Format: <code>clear cards d/DECK_TITLE</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -340,7 +340,7 @@ Format: <code>clear cards n/DECK_TITLE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>clear cards n/cs2105</code><br>
+<p><code>clear cards d/cs2105</code><br>
 Clears all the cards in the deck <code>cs2105</code></p>
 </li>
 </ul>
@@ -390,7 +390,7 @@ Deletes the 1st deck in the results of the search command.</p>
 <h4 id="deleting-a-card-code-delete-card-code"><a class="link" href="#deleting-a-card-code-delete-card-code">3.6.2. Deleting a card: <code>delete card</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified card from a specific deck.
-Format: <code>delete INDEX n/DECK_TITLE</code></p>
+Format: <code>delete INDEX d/DECK_TITLE</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -412,7 +412,7 @@ Format: <code>delete INDEX n/DECK_TITLE</code></p>
 <ul>
 <li>
 <p><code>list cards</code><br>
-<code>delete card 2</code> n/2030<br>
+<code>delete card 2</code> d/2030<br>
 Deletes the 2nd flash card in the <code>cs2030</code> deck.</p>
 </li>
 <li>
@@ -429,11 +429,16 @@ Deletes the 1st card in the results of the search card command.</p>
 <div class="sect3">
 <h4 id="searching-for-a-deck-code-search-code"><a class="link" href="#searching-for-a-deck-code-search-code">3.7.1. Searching for a deck: <code>search</code></a></h4>
 <div class="paragraph">
-<p>Searches for the decks with titles that contain any of the given keywords.
-Format: <code>search d/KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Searches for the decks with titles that contain any of the given keywords or all of the keywords
+concatenated with the <code>&amp;</code> symbol.
+Format: <code>search d/KEYWORD [&amp;] [MORE_KEYWORDS]</code></p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>If the search has a <code>&amp;</code> symbol, only decks with the words concatenated before and after
+the symbol will be returned.</p>
+</li>
 <li>
 <p>The search is case insensitive. e.g cs2040 will match CS2040</p>
 </li>
@@ -441,13 +446,10 @@ Format: <code>search d/KEYWORD [MORE_KEYWORDS]</code></p>
 <p>The order of the keywords does not matter. e.g. Science Module will match Module Science</p>
 </li>
 <li>
-<p>Only the title is searched.</p>
+<p>Both title and tags are searched.</p>
 </li>
 <li>
-<p>The keyword does not need to match a word within the deck’s title exactly . e.g. cs will match with cs2030</p>
-</li>
-<li>
-<p>Decks with titles that match at least one of the keywords will be returned. e.g. Java notes will return Java notes, Javascript notes, C++ notes.</p>
+<p>The keyword needs to match a word within the deck’s title exactly . e.g. cs will not match with cs2030</p>
 </li>
 </ul>
 </div>
@@ -457,12 +459,12 @@ Format: <code>search d/KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>search d/cs2106</code><br>
-Returns <code>cs2106</code></p>
+<p><code>search d/cs2106 d/easy</code><br>
+Returns the deck titled or tagged with <code>cs2106</code> or <code>easy</code></p>
 </li>
 <li>
-<p><code>search d/cs2040 d/cs2030</code><br>
-Returns <code>cs2040</code> and <code>cs2030</code></p>
+<p><code>search d/cs2040 &amp; hard</code><br>
+Returns decks titled or tagged with both <code>cs2040</code> and <code>cs2106</code></p>
 </li>
 </ul>
 </div>
@@ -810,4 +812,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-18 11:34:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-18 13:38:11 UTC</div></div></div></body></html>
