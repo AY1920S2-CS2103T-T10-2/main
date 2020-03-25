@@ -24,8 +24,9 @@
 <ul class="sectlevel2">
 <li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
 <li><a href="#search-and-filter-feature">3.2. Search and Filter feature</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#test-feature">3.3. Test feature</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -334,31 +335,31 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="sect3">
 <h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
+<p>The undo/redo mechanism is facilitated by <code>VersionedCardiBuddy</code>.
+It extends <code>CardiBuddy</code> with an undo/redo history, stored internally as an <code>cardiBuddyStateList</code> and <code>currentStatePointer</code>.
 Additionally, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
+<p><code>VersionedCardiBuddy#commit()</code>&#8201;&#8212;&#8201;Saves the current CardiBuddy state in its history.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
+<p><code>VersionedCardiBuddy#undo()</code>&#8201;&#8212;&#8201;Restores the previous CardiBuddy state from its history.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
+<p><code>VersionedCardiBuddy#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone CardiBuddy state from its history.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCardiBuddy()</code>, <code>Model#undoCardiBuddy()</code> and <code>Model#redoCardiBuddy()</code> respectively.</p>
 </div>
 <div class="paragraph">
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedCardiBuddy</code> will be initialized with the initial CardiBuddy state, and the <code>currentStatePointer</code> pointing to that single CardiBuddy state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -366,7 +367,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th deck in the address book. The <code>delete</code> command calls <code>Model#commitCardiBuddy()</code>, causing the modified state of CardiBuddy, after the <code>delete 5</code> command executes, to be saved in the <code>cardiBuddyStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted CardiBuddy state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -374,7 +375,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 3. The user executes <code>add d/cs2103T &#8230;&#8203;</code> to add a new deck. The <code>add</code> command also calls <code>Model#commitCardiBuddy()</code>, causing another modified CardiBuddy state to be saved into the <code>cardiBuddyStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -388,13 +389,13 @@ Additionally, it implements the following operations:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+If a command fails its execution, it will not call <code>Model#commitCardiBuddy()</code>, so the CardiBuddy state will not be saved into the <code>cardiBuddyStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that adding the deck was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoCardiBuddy()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous CardiBuddy state, and restores the CardiBuddy to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -408,7 +409,7 @@ If a command fails its execution, it will not call <code>Model#commitAddressBook
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous CardiBuddy states to restore. The <code>undo</code> command uses <code>Model#canUndoCardiBuddy()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 </td>
 </tr>
 </table>
@@ -434,7 +435,7 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCardiBuddy()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the CardiBuddy to that state.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -443,13 +444,13 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the <code>currentStatePointer</code> is at index <code>cardiBuddyStateList.size() - 1</code>, pointing to the latest CardiBuddy state, then there are no undone CardiBuddy states to restore. The <code>redo</code> command uses <code>Model#canRedoCardiBuddy()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
+<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the CardiBuddy, such as <code>list</code>, will usually not call <code>Model#commitCardiBuddy()</code>, <code>Model#undoCardiBuddy()</code> or <code>Model#redoCardiBuddy()</code>. Thus, the <code>cardiBuddyStateList</code> remains unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -457,7 +458,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCardiBuddy()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>CardiBuddyStateList</code>, all CardiBuddy states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add d/cs2103T &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -480,7 +481,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire CardiBuddy.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -497,10 +498,10 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the deck being deleted).</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: We must ensure that the implementation of each individual command is correct.</p>
 </li>
 </ul>
 </div>
@@ -513,14 +514,14 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of CardiBuddy states.</p>
 <div class="ulist">
 <ul>
 <li>
 <p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
+<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedCardiBuddy</code>.</p>
 </li>
 </ul>
 </div>
@@ -576,14 +577,38 @@ For example, <code>filter Y1 &amp; hard</code> will return decks and flashcards 
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="test-feature"><a class="link" href="#test-feature">3.3. Test feature</a></h3>
+<div class="paragraph">
+<p>Users can start a <a href="#test-session">[test-session]</a> with a chosen <code>Deck</code> by:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>index</code> of the deck will be provided byt he user and parsed by Cardi Buddy. A <code>TestSession</code> object containing the indicated <code>Deck</code> is created.</p>
+</li>
+<li>
+<p>The <code>TestSession</code> object updates Cardibuddy&#8217;s <code>UniqueFlashcardList</code> to display the first flashcard in the queue, along with the other flashcards to be tested.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following is a proposed diagram of how the <code>test</code> feature should work:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TestSequenceDiagram.png" alt="TestSequenceDiagram">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -614,7 +639,7 @@ For example, <code>filter Y1 &amp; hard</code> will return decks and flashcards 
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1387,4 +1412,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 15:50:09 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 15:50:23 UTC</div></div></div></body></html>
