@@ -23,7 +23,7 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
+<li><a href="#search-and-filter-feature">3.2. Search and Filter feature</a></li>
 <li><a href="#logging">3.3. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
 </ul>
@@ -173,7 +173,7 @@ The following class plays an important role at the architecture level:</p>
 <p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
-<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>DeckListPanel</code>, <code>FlashcardListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
@@ -544,9 +544,35 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
+<h3 id="search-and-filter-feature"><a class="link" href="#search-and-filter-feature">3.2. Search and Filter feature</a></h3>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p>Users can choose to find a <code>Deck</code> or a <code>Flashcard</code> through:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>searching by keywords from the title of a <code>Deck</code> or from the <code>Question</code> or <code>Answer</code> from a <code>Flashcard</code>.</p>
+</li>
+<li>
+<p>filtering by tags from the <code>Tag(s)</code> associated with a <code>Deck</code> or a <code>Flashcard</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Both <code>search</code> and <code>filter</code> have the and-or functionality where adding <code>&amp;</code> between keywords returns decks and flashcards
+with both terms before and after the <code>&amp;</code> symbol.
+For example, <code>filter Y1 &amp; hard</code> will return decks and flashcards that are tagged with both <code>Y1</code> and <code>hard</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>Search</code> command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SearchFilterDiagram.png" alt="SearchFilterDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure X. Component interactions for a Search command</p>
 </div>
 </div>
 <div class="sect2">
@@ -1361,4 +1387,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 07:50:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-03-25 14:51:39 UTC</div></div></div></body></html>
