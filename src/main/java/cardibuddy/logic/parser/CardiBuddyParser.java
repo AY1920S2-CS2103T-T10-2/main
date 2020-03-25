@@ -12,9 +12,9 @@ import cardibuddy.logic.commands.Command;
 import cardibuddy.logic.commands.DeleteCommand;
 import cardibuddy.logic.commands.EditCommand;
 import cardibuddy.logic.commands.ExitCommand;
+import cardibuddy.logic.commands.FilterCommand;
 import cardibuddy.logic.commands.HelpCommand;
 import cardibuddy.logic.commands.ListCommand;
-import cardibuddy.logic.commands.OpenCommand;
 import cardibuddy.logic.commands.SearchCommand;
 import cardibuddy.logic.commands.TestCommand;
 import cardibuddy.logic.parser.exceptions.ParseException;
@@ -46,8 +46,6 @@ public class CardiBuddyParser {
         final String arguments = matcher.group("arguments");
 
         switch (commandWord) {
-        case OpenCommand.COMMAND_WORD:
-            return new OpenCommandParser().parse(arguments);
 
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
@@ -63,6 +61,9 @@ public class CardiBuddyParser {
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
+
+        case FilterCommand.COMMAND_WORD:
+            return new FilterCommandParser().parse(arguments);
 
         case SearchCommand.COMMAND_WORD:
             return new SearchCommandParser().parse(arguments);
