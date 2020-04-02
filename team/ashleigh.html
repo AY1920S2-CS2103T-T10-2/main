@@ -20,20 +20,42 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>the ability to start a test session with a selected deck of flashcards.k</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to test themselves on their subject content by:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1. Fetching the flashcards of the deck at the user&#8217;s specified index and displaying them question by question.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>2. Adding flashcards back into the test session if they got it wrong <strong>(prioritisation)</strong></p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>3. Checking the user&#8217;s answer with the flashcard&#8217;s stored answer, and showing them the outcome (Right or Wrong).</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>4. Storing the test results (Number of tries, correct/wrong) to generate statistics for the user to view at the end of each test.</p>
+</li>
+<li>
+<p>5. Giving users the ability to force correct answers if their answers differ from the flashcard&#8217;s stored answer.</p>
+</li>
+<li>
+<p>6. Giving users the ability to skip questions when needed.</p>
+</li>
+<li>
+<p>7. Giving users the ability to quit the ongoing test session halfway.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly as a flashcard application can not be without a testing feature. In addition, this feature provides certain enhancements on top of basic testing - such as prioritisation, skipping and the ability to force correct answers. This provides greater flexibility in how the user chooses to answer questions, and allows for paraphrasing of answers which improves information retention.</p>
+</li>
+<li>
+<p>Highlights: This enhancement is a major overhaul to the application, and required an in-depth analysis of design alternatives. The implementation was challenging as it required deep analysis of the application in order to figure out how to replace the existing JavaFX scene with the test session. In addition, the test session required tight integration with other aspects of the application such as Flashcards and Decks, and constant communication and clarification with the team was required.</p>
 </li>
 </ul>
 </div>
@@ -375,4 +397,4 @@ If the <code>currentStatePointer</code> is at index <code>cardiBuddyStateList.si
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-02 22:28:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-02 23:01:24 UTC</div></div></div></body></html>
