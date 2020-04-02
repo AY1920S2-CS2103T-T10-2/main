@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>CardiB - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team 10-2</code>      Since: <code>Jan 2020</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team T10-2</code>      Since: <code>Jan 2020</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -17,19 +17,20 @@
 <li><a href="#adding">3.2. Adding</a></li>
 <li><a href="#editing">3.3. Editing</a></li>
 <li><a href="#listing">3.4. Listing</a></li>
-<li><a href="#clearing">3.5. Clearing</a></li>
-<li><a href="#deleting">3.6. Deleting</a></li>
-<li><a href="#searching">3.7. Searching</a></li>
-<li><a href="#replacing-image">3.8. Replacing image</a></li>
+<li><a href="#opening">3.5. Opening</a></li>
+<li><a href="#clearing">3.6. Clearing</a></li>
+<li><a href="#deleting">3.7. Deleting</a></li>
+<li><a href="#searching">3.8. Searching</a></li>
 <li><a href="#filtering">3.9. Filtering</a></li>
 <li><a href="#prioritising">3.10. Prioritising</a></li>
 <li><a href="#testing">3.11. Testing</a></li>
-<li><a href="#undo-redo">3.12. Undo/Redo</a></li>
+<li><a href="#undo-redo-coming-in-v2-0">3.12. Undo/Redo [coming in v2.0]</a></li>
 <li><a href="#detecting-duplicates">3.13. Detecting duplicates</a></li>
-<li><a href="#statistics">3.14. Statistics</a></li>
+<li><a href="#statistics-coming-in-v2-0">3.14. Statistics [coming in v2.0]</a></li>
 <li><a href="#syncing-across-multiple-platforms-sync-coming-in-v2-0">3.15. Syncing across multiple platforms: sync [coming in v2.0]</a></li>
 <li><a href="#playing-memory-games-game-coming-in-v2-0">3.16. Playing memory games: game [coming in v2.0]</a></li>
 <li><a href="#customising-flashcards-custom-coming-in-v2-0">3.17. Customising flashcards: custom [coming in v2.0]</a></li>
+<li><a href="#replacing-image-coming-in-v2-0">3.18. Replacing image [coming in v2.0]</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -54,7 +55,7 @@
 <p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level3/releases">here</a>.</p>
+<p>Download the latest <code>cardibuddy.jar</code> <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/releases">here</a>.</p>
 </li>
 <li>
 <p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
@@ -76,13 +77,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p><strong><code>list</code></strong> : lists all decks</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>add</code></strong><code>d/CS1101S t/Basics</code> : adds an empty deck titled <code>CS1101S</code> to the Cardi Buddy.</p>
 </li>
 <li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
+<p><strong><code>open 1</code></strong> : opens the 1st deck shown in the current list</p>
+</li>
+<li>
+<p><strong><code>delete deck</code></strong><code>3</code> : deletes the 3rd deck shown in the current list</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -108,16 +112,16 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add d/TITLE</code>, <code>TITLE</code> is a parameter which can be used as <code>add d/CS1101S</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Items in square brackets are optional e.g <code>d/TITLE [t/TAG]</code> can be used as <code>d/CS1101S t/Basics</code> or as <code>d/CS1101S</code>.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
+<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/Easy</code>, <code>t/Easy t/Basics</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order e.g. if the command specifies <code>d/TITLE t/TAG</code>, <code>t/TAG d/TITLE</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -152,10 +156,17 @@ Format: <code>exit</code></p>
 <div class="sect2">
 <h3 id="adding"><a class="link" href="#adding">3.2. Adding</a></h3>
 <div class="sect3">
-<h4 id="adding-a-deck-code-add-deck-code"><a class="link" href="#adding-a-deck-code-add-deck-code">3.2.1. Adding a deck: <code>add deck</code></a></h4>
+<h4 id="adding-a-deck-code-add-d-title-code"><a class="link" href="#adding-a-deck-code-add-d-title-code">3.2.1. Adding a deck: <code>add d/TITLE</code></a></h4>
 <div class="paragraph">
 <p>Creates a new deck to be added to the library.
 Format: <code>add d/TITLE [t/TAG]…</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Tag names are alphanumeric with no spaces E.g. t/Core Module is an invalid tag while t/CoreModule is valid.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>A deck can have any number of tags (including 0)</p>
@@ -166,43 +177,21 @@ Format: <code>add d/TITLE [t/TAG]…</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add d/cs2103T</code><br>
-Returns a new deck titled <code>cs2103T</code></p>
+<p><code>add d/CS2103</code><br>
+Returns a new deck titled <code>CS2103</code></p>
 </li>
 <li>
-<p><code>add d/cs1101s t/Hard t/CS</code><br>
-Returns a new deck titled <code>cs1101s</code> with the tags <code>Hard</code> and <code>CS</code></p>
+<p><code>add d/CS1101S t/Easy t/Basics</code><br>
+Adds a new deck titled <code>CS1101S</code> with the tags <code>Easy</code> and <code>Basics</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-a-card-code-add-card-code"><a class="link" href="#adding-a-card-code-add-card-code">3.2.2. Adding a card: <code>add card</code></a></h4>
+<h4 id="adding-a-card-code-add-c-deck_title-q-question-a-answer-code"><a class="link" href="#adding-a-card-code-add-c-deck_title-q-question-a-answer-code">3.2.2. Adding a card: <code>add c/DECK_TITLE q/QUESTION a/ANSWER</code></a></h4>
 <div class="paragraph">
 <p>Creates a new card to be added to the deck.
-Format: <code>add c/DECK_TITLE n/CARD_TYPE</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>The variable CARD_TYPE can only take the values of ‘MCQ’, ‘True/False’ or ‘Short Answer’ or ‘Matching’. Any other values will cause the application to display an error message.</p>
-</li>
-<li>
-<p>When a card is created, the question field of the card will be set to the default value of ‘Please type your question here’.</p>
-</li>
-<li>
-<p>Depending on the CARD_TYPE inputted by the user, the answer field of the card will be set to different default values.</p>
-</li>
-<li>
-<p>For ‘MCQ’, the answer field will contain 4 options labelled ‘A’, ‘B’, ‘C’ and ‘D’, and an additional label that reads ‘You can also enter your answer in the command field’.</p>
-</li>
-<li>
-<p>For ‘True/False’, the answer field will contain 2 options labelled ‘True’ and ‘False’, and an additional label that reads ‘You can also enter your answer in the command field’.</p>
-</li>
-<li>
-<p>For ‘Short Answer’, the answer field will contain a label that reads ‘You can also enter your answer in the command field’.</p>
-</li>
-</ul>
+Format: <code>add c/DECK_TITLE q/QUESTION a/ANSWER</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -210,8 +199,8 @@ Format: <code>add c/DECK_TITLE n/CARD_TYPE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add c/cs1101s n/MCQ</code><br>
-Returns a new card belonging to the deck <code>cs1101s</code> and of the type <code>MCQ</code></p>
+<p><code>add c/CS1101S q/How does one go about solving recursion problems? a/Wishful thinking</code><br>
+Adds a new card belonging to the deck <code>CS1101S</code></p>
 </li>
 </ul>
 </div>
@@ -220,10 +209,10 @@ Returns a new card belonging to the deck <code>cs1101s</code> and of the type <c
 <div class="sect2">
 <h3 id="editing"><a class="link" href="#editing">3.3. Editing</a></h3>
 <div class="sect3">
-<h4 id="editing-a-deck-code-edit-deck-code"><a class="link" href="#editing-a-deck-code-edit-deck-code">3.3.1. Editing a deck: <code>edit deck</code></a></h4>
+<h4 id="editing-a-deck-code-edit-code"><a class="link" href="#editing-a-deck-code-edit-code">3.3.1. Editing a deck: <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing deck in the library.
-Format: <code>edit deck INDEX [d/TITLE] [t/TAG]…</code></p>
+Format: <code>edit INDEX [d/TITLE] [t/TAG]…</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -240,7 +229,8 @@ Format: <code>edit deck INDEX [d/TITLE] [t/TAG]…</code></p>
 <p>When editing tags, the existing tags of the deck will be removed i.e adding of tags is not cumulative.</p>
 </li>
 <li>
-<p>You can remove all the deck’s tags by typing t/ without specifying any tags after it.</p>
+<p>You can remove all the deck’s tags by typing t/ without specifying any tags after it. If not, the tags will not be
+removed.</p>
 </li>
 </ul>
 </div>
@@ -250,18 +240,18 @@ Format: <code>edit deck INDEX [d/TITLE] [t/TAG]…</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 d/cs2103T</code><br>
-Edits the title of the 1st deck to be <code>cs2103T</code>.</p>
+<p><code>edit 1 d/CS2103T</code><br>
+Edits the title of the 1st deck to be <code>CS2103T</code> without removing existing tags.</p>
 </li>
 <li>
-<p><code>edit 2 d/cs2040 t/</code><br>
-Edits the title of the 2nd deck to be <code>cs2040</code> and clears all existing tags.</p>
+<p><code>edit 2 d/CS2040 t/</code><br>
+Edits the title of the 2nd deck to be <code>CS2040</code> and clears all existing tags.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-card-code-edit-card-code"><a class="link" href="#editing-a-card-code-edit-card-code">3.3.2. Editing a card: <code>edit card</code></a></h4>
+<h4 id="editing-a-card-code-edit-card-code-coming-in-v2-0"><a class="link" href="#editing-a-card-code-edit-card-code-coming-in-v2-0">3.3.2. Editing a card: <code>edit card</code> [coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Edits an existing card in the deck.
 Format: <code>edit card INDEX [q/QUESTION] [a/ANSWER] [t/TAG]…</code></p>
@@ -305,52 +295,41 @@ Edits the answer of the 2nd card to be <code>cs2040</code> and clears all existi
 <div class="sect2">
 <h3 id="listing"><a class="link" href="#listing">3.4. Listing</a></h3>
 <div class="sect3">
-<h4 id="listing-all-decks-code-list-decks-code"><a class="link" href="#listing-all-decks-code-list-decks-code">3.4.1. Listing all decks: <code>list decks</code></a></h4>
+<h4 id="listing-all-decks-code-list-code"><a class="link" href="#listing-all-decks-code-list-code">3.4.1. Listing all decks: <code>list</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all the decks in the library.<br>
-Format: <code>list decks</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="listing-all-cards-in-a-deck-code-list-cards-code"><a class="link" href="#listing-all-cards-in-a-deck-code-list-cards-code">3.4.2. Listing all cards in a deck: <code>list cards</code></a></h4>
-<div class="paragraph">
-<p>Shows a list of all the cards in a particular deck. This command is only valid after you enter a deck.
-Format: <code>list cards</code></p>
+<p>Shows a list of all the decks in the library and hides the displayed cards (if any).<br>
+Format: <code>list</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing"><a class="link" href="#clearing">3.5. Clearing</a></h3>
+<h3 id="opening"><a class="link" href="#opening">3.5. Opening</a></h3>
 <div class="sect3">
-<h4 id="clearing-all-decks-code-clear-decks-code"><a class="link" href="#clearing-all-decks-code-clear-decks-code">3.5.1. Clearing all decks: <code>clear decks</code></a></h4>
+<h4 id="opening-a-deck-code-open-code"><a class="link" href="#opening-a-deck-code-open-code">3.5.1. Opening a deck: <code>open</code></a></h4>
+<div class="paragraph">
+<p>Opens an existing deck in the library.
+Format: <code>open INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Shows a list of all the cards in the deck.<br>
+Format: <code>open 1</code></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing"><a class="link" href="#clearing">3.6. Clearing</a></h3>
+<div class="sect3">
+<h4 id="clearing-all-decks-code-clear-code"><a class="link" href="#clearing-all-decks-code-clear-code">3.6.1. Clearing all decks: <code>clear</code></a></h4>
 <div class="paragraph">
 <p>Clears all entries (both decks and cards)  from the library.<br>
-Format: <code>clear decks</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="clearing-all-cards-in-a-deck-code-clear-cards-code"><a class="link" href="#clearing-all-cards-in-a-deck-code-clear-cards-code">3.5.2. Clearing all cards in a deck: <code>clear cards</code></a></h4>
-<div class="paragraph">
-<p>Clears all the cards from the specified deck.
-Format: <code>clear cards d/DECK_TITLE</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>clear cards d/cs2105</code><br>
-Clears all the cards in the deck <code>cs2105</code></p>
-</li>
-</ul>
+Format: <code>clear</code></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting"><a class="link" href="#deleting">3.6. Deleting</a></h3>
+<h3 id="deleting"><a class="link" href="#deleting">3.7. Deleting</a></h3>
 <div class="sect3">
-<h4 id="deleting-a-deck-code-delete-deck-code"><a class="link" href="#deleting-a-deck-code-delete-deck-code">3.6.1. Deleting a deck: <code>delete deck</code></a></h4>
+<h4 id="deleting-a-deck-code-delete-deck-code"><a class="link" href="#deleting-a-deck-code-delete-deck-code">3.7.1. Deleting a deck: <code>delete deck</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified deck from the library.
 Format: <code>delete deck INDEX</code></p>
@@ -387,7 +366,7 @@ Deletes the 1st deck in the results of the search command.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-a-card-code-delete-card-code"><a class="link" href="#deleting-a-card-code-delete-card-code">3.6.2. Deleting a card: <code>delete card</code></a></h4>
+<h4 id="deleting-a-card-code-delete-card-code"><a class="link" href="#deleting-a-card-code-delete-card-code">3.7.2. Deleting a card: <code>delete card</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified card from a specific deck.
 Format: <code>delete INDEX d/DECK_TITLE</code></p>
@@ -425,13 +404,13 @@ Deletes the 1st card in the results of the search card command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="searching"><a class="link" href="#searching">3.7. Searching</a></h3>
+<h3 id="searching"><a class="link" href="#searching">3.8. Searching</a></h3>
 <div class="sect3">
-<h4 id="searching-for-a-deck-code-search-code"><a class="link" href="#searching-for-a-deck-code-search-code">3.7.1. Searching for a deck: <code>search</code></a></h4>
+<h4 id="searching-for-a-deck-code-search-deck-code"><a class="link" href="#searching-for-a-deck-code-search-deck-code">3.8.1. Searching for a deck: <code>search deck</code></a></h4>
 <div class="paragraph">
 <p>Searches for the decks with titles that contain any of the given keywords or all of the keywords
 concatenated with the <code>&amp;</code> symbol.
-Format: <code>search d/KEYWORD [&amp;] [MORE_KEYWORDS]</code></p>
+Format: <code>search deck KEYWORD [&amp;] [MORE_KEYWORDS]</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -446,7 +425,7 @@ the symbol will be returned.</p>
 <p>The order of the keywords does not matter. e.g. Science Module will match Module Science</p>
 </li>
 <li>
-<p>Both title and tags are searched.</p>
+<p>Only titles of the decks are searched.</p>
 </li>
 <li>
 <p>The keyword needs to match a word within the deck’s title exactly . e.g. cs will not match with cs2030</p>
@@ -459,24 +438,32 @@ the symbol will be returned.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>search d/cs2106 d/easy</code><br>
-Returns the deck titled or tagged with <code>cs2106</code> or <code>easy</code></p>
+<p><code>search deck database</code><br>
+Displays decks with the word <code>database</code> in the titles.</p>
 </li>
 <li>
-<p><code>search d/cs2040 &amp; hard</code><br>
-Returns decks titled or tagged with both <code>cs2040</code> and <code>cs2106</code></p>
+<p><code>search deck database &amp; relational</code><br>
+Displays decks with both of the words <code>database</code> and <code>relational</code> in the titles.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="searching-for-a-card-code-search-code"><a class="link" href="#searching-for-a-card-code-search-code">3.7.2. Searching for a card: <code>search</code></a></h4>
+<h4 id="searching-for-a-card-code-search-card-code"><a class="link" href="#searching-for-a-card-code-search-card-code">3.8.2. Searching for a card: <code>search card</code></a></h4>
 <div class="paragraph">
 <p>Finds the cards with a question that contain any of the given keywords.
-Format: <code>search c/KEYWORD [MORE_KEYWORDS]</code></p>
+Format: <code>search card [&amp;] [MORE_KEYWORDS]</code></p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>A deck needs to be opened for the <code>search card</code> command to work. The command will only search for cards in the
+opened deck.</p>
+</li>
+<li>
+<p>If the search has a <code>&amp;</code> symbol, only cards with the words concatenated before and after
+the symbol, in the question, will be returned.</p>
+</li>
 <li>
 <p>The search is case insensitive. e.g programming will match Programming.</p>
 </li>
@@ -484,13 +471,7 @@ Format: <code>search c/KEYWORD [MORE_KEYWORDS]</code></p>
 <p>The order of the keywords does not matter. e.g. Javascript programming language will match with programming language Javascript.</p>
 </li>
 <li>
-<p>Both the question and the answer can be searched. As long as the flashcard has a question or answer that contains the keyword, that flashcard will be returned.</p>
-</li>
-<li>
-<p>The keyword does not need to match a word within the question or answer exactly. e.g. Java will match with Javascript.</p>
-</li>
-<li>
-<p>Flashcards with questions or answers that match at least one of the keywords will be returned. e.g. searching the word programming will return object-oriented programming… and Java programming language…</p>
+<p>The keyword needs to match a word within the question exactly. e.g. Java will not match with Javascript.</p>
 </li>
 </ul>
 </div>
@@ -500,71 +481,12 @@ Format: <code>search c/KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>search c/cs2106</code><br>
-Returns <code>cs2106</code></p>
+<p><code>search card principle</code><br>
+Displays cards with the word <code>principle</code> in the questions.</p>
 </li>
 <li>
-<p><code>search c/cs2040 c/cs2030</code><br>
-Returns <code>cs2040</code> and <code>cs2030</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="replacing-image"><a class="link" href="#replacing-image">3.8. Replacing image</a></h3>
-<div class="sect3">
-<h4 id="replacing-a-deck-image-code-replace-deck-image-code"><a class="link" href="#replacing-a-deck-image-code-replace-deck-image-code">3.8.1. Replacing a deck image: <code>replace deck image</code></a></h4>
-<div class="paragraph">
-<p>Replaces the photo of an existing deck in the library. By default, all decks will have a default logo as shown in our wireframe.
-Format: <code>replace deck photo INDEX n/PHOTO_PATH</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Replaces the photo of the deck at the specified INDEX. The index refers to the index number shown in the complete list of decks. The index must be a positive integer 1, 2, 3, …</p>
-</li>
-<li>
-<p>The application will display a text label that reads ‘You can enter the path of your image into the command field or drag and drop your image into the command field.’</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>replace deck image 1 n/src/resources/images/img.PNG.</code><br>
-Replaces the photo of the 1st deck to the photo that the file path directs to.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="replacing-a-card-image-code-replace-card-image-code"><a class="link" href="#replacing-a-card-image-code-replace-card-image-code">3.8.2. Replacing a card image: <code>replace card image</code></a></h4>
-<div class="paragraph">
-<p>Replaces the photo of an existing card in a specified deck. By default, all cards will have a default image as shown in our wireframe.
-Format: <code>replace card image n/DECK_TITLE INDEX n/PHOTO_PATH</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Replaces the photo of the card belonging to the deck with that DECK_TITLE, whereby the card is at the specified INDEX. The index refers to the index number shown in the complete list of decks. The index must be a positive integer 1, 2, 3, …</p>
-</li>
-<li>
-<p>The application will display a text label that reads ‘You can enter the path of your image into the command field or drag and drop your image into the command field.’</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>replace card image n/cs3230 1 n/src/resources/images/img.PNG.</code><br>
-Replaces the photo of the 1st card of the <code>cs3230</code> deck with the photo that the file path directs to.</p>
+<p><code>search card diagram &amp; UML</code><br>
+Displays decks with both of the words <code>diagram</code> and <code>UML</code> in the questions.</p>
 </li>
 </ul>
 </div>
@@ -573,15 +495,19 @@ Replaces the photo of the 1st card of the <code>cs3230</code> deck with the phot
 <div class="sect2">
 <h3 id="filtering"><a class="link" href="#filtering">3.9. Filtering</a></h3>
 <div class="sect3">
-<h4 id="filtering-by-tag-code-filter-tag-code"><a class="link" href="#filtering-by-tag-code-filter-tag-code">3.9.1. Filtering by tag: <code>filter tag</code></a></h4>
+<h4 id="filtering-by-tags-code-filter-code"><a class="link" href="#filtering-by-tags-code-filter-code">3.9.1. Filtering by tags: <code>filter</code></a></h4>
 <div class="paragraph">
 <p>Filters across all decks and only displays the decks with the specific tag.
-Format: <code>filter tag t/TAG_TITLE</code></p>
+Format: <code>filter TAGNAME [&amp;] [MORE_TAGNAMES]</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Filtering by tag is case insensitive. e.g cs2040 will match CS2040</p>
+<p>If the search has a <code>&amp;</code> symbol, only decks with the tags concatenated before and after
+the symbol will be returned.</p>
+</li>
+<li>
+<p>Filtering by tag is case insensitive. e.g hard will match Hard</p>
 </li>
 </ul>
 </div>
@@ -591,42 +517,12 @@ Format: <code>filter tag t/TAG_TITLE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>filter tag t/Computing</code><br>
-Returns <code>cs2040</code>, <code>cs3223</code> and <code>cs1101s</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="filtering-by-keyword-code-filter-keyword-code"><a class="link" href="#filtering-by-keyword-code-filter-keyword-code">3.9.2. Filtering by keyword: <code>filter keyword</code></a></h4>
-<div class="paragraph">
-<p>Filters across all decks and only displays the cards with questions or answers that contain the specific keyword.
-Format: <code>filter keyword KEYWORD</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Filtering by keyword is case insensitive. e.g programming will match Programming.</p>
+<p><code>filter hard</code><br>
+Displays decks with the tag <code>hard</code>.</p>
 </li>
 <li>
-<p>The order of the keywords does not matter. e.g. Javascript programming language will match with programming language Javascript.</p>
-</li>
-<li>
-<p>The keyword does not need to match a word within the question or answer exactly. e.g. Java will match with Javascript.</p>
-</li>
-<li>
-<p>Flashcards that match at least one of the keywords will be returned. e.g. searching the word programming will return object-oriented programming… and Java programming language…</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>filter keyword language</code><br>
-Returns all cards that contain the word <strong>language</strong> in the question, answer or both.</p>
+<p><code>filter hard &amp; coremodule</code><br>
+Displays decks with both the tags <code>hard</code> and <code>coremodule</code>.</p>
 </li>
 </ul>
 </div>
@@ -754,7 +650,7 @@ To answer the question: "What is the name of this application?"</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo"><a class="link" href="#undo-redo">3.12. Undo/Redo</a></h3>
+<h3 id="undo-redo-coming-in-v2-0"><a class="link" href="#undo-redo-coming-in-v2-0">3.12. Undo/Redo [coming in v2.0]</a></h3>
 <div class="sect3">
 <h4 id="undoing-command-code-undo-code"><a class="link" href="#undoing-command-code-undo-code">3.12.1. Undoing command: <code>undo</code></a></h4>
 <div class="paragraph">
@@ -789,34 +685,17 @@ Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="statistics"><a class="link" href="#statistics">3.14. Statistics</a></h3>
+<h3 id="statistics-coming-in-v2-0"><a class="link" href="#statistics-coming-in-v2-0">3.14. Statistics [coming in v2.0]</a></h3>
 <div class="sect3">
-<h4 id="displaying-all-statistics-code-stats-all-code"><a class="link" href="#displaying-all-statistics-code-stats-all-code">3.14.1. Displaying all statistics: <code>stats all</code></a></h4>
+<h4 id="displaying-all-statistics-code-statistics-code"><a class="link" href="#displaying-all-statistics-code-statistics-code">3.14.1. Displaying all statistics: <code>statistics</code></a></h4>
 <div class="paragraph">
 <p>Displays the statistics across all decks.
-Format: <code>stats all</code></p>
+Format: <code>statistics</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p>Average time spent on each deck, average number of questions completed per week, total number of questions completed for that week and the number of decks associated with each tag.</p>
-</li>
-<li>
-<p>A graphical display in the form of a pie chart will also be used to represent the statistics.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="displaying-deck-statistics-code-stats-deck-code"><a class="link" href="#displaying-deck-statistics-code-stats-deck-code">3.14.2. Displaying deck statistics: <code>stats deck</code></a></h4>
-<div class="paragraph">
-<p>Displays the statistics of a specific deck.
-Format: <code>stats deck</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Displayed statistics consists of average time spent on the deck, total number of questions in that deck completed in that week, time spend on the test session for that deck.</p>
 </li>
 <li>
 <p>A graphical display in the form of a pie chart will also be used to represent the statistics.</p>
@@ -837,6 +716,65 @@ Format: <code>stats deck</code></p>
 <h3 id="customising-flashcards-custom-coming-in-v2-0"><a class="link" href="#customising-flashcards-custom-coming-in-v2-0">3.17. Customising flashcards: custom [coming in v2.0]</a></h3>
 
 </div>
+<div class="sect2">
+<h3 id="replacing-image-coming-in-v2-0"><a class="link" href="#replacing-image-coming-in-v2-0">3.18. Replacing image [coming in v2.0]</a></h3>
+<div class="sect3">
+<h4 id="replacing-a-deck-image-code-replace-deck-image-code"><a class="link" href="#replacing-a-deck-image-code-replace-deck-image-code">3.18.1. Replacing a deck image: <code>replace deck image</code></a></h4>
+<div class="paragraph">
+<p>Replaces the photo of an existing deck in the library. By default, all decks will have a default logo as shown in our wireframe.
+Format: <code>replace deck photo INDEX p/PHOTO_PATH</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Replaces the photo of the deck at the specified INDEX. The index refers to the index number shown in the complete list of decks. The index must be a positive integer 1, 2, 3, …</p>
+</li>
+<li>
+<p>The application will display a text label that reads ‘You can enter the path of your image into the command field or drag and drop your image into the command field.’</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>replace deck image 1 d/src/resources/images/img.PNG.</code><br>
+Replaces the photo of the 1st deck to the photo that the file path directs to.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="replacing-a-card-image-code-replace-card-image-code"><a class="link" href="#replacing-a-card-image-code-replace-card-image-code">3.18.2. Replacing a card image: <code>replace card image</code></a></h4>
+<div class="paragraph">
+<p>Replaces the photo of an existing card in a specified deck. By default, all cards will have a default image as shown in our wireframe.
+Format: <code>replace card image d/DECK_TITLE INDEX p/PHOTO_PATH</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Replaces the photo of the card belonging to the deck with that DECK_TITLE, whereby the card is at the specified INDEX. The index refers to the index number shown in the complete list of decks. The index must be a positive integer 1, 2, 3, …</p>
+</li>
+<li>
+<p>The application will display a text label that reads ‘You can enter the path of your image into the command field or drag and drop your image into the command field.’</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>replace card image d/cs3230 1 p/src/resources/images/img.PNG.</code><br>
+Replaces the photo of the 1st card of the <code>cs3230</code> deck with the photo that the file path directs to.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -844,7 +782,7 @@ Format: <code>stats deck</code></p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Cardi Buddy folder.</p>
 </div>
 </div>
 </div>
@@ -854,23 +792,31 @@ Format: <code>stats deck</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p><strong>Add deck</strong> : <code>add d/TITLE [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>add d/CS2030 t/Fundamentals t/Medium</code></p>
+</li>
+<li>
+<p><strong>Add card</strong> : <code>add c/TITLE q/QUESTION a/ANSWER</code><br>
+e.g. <code>add c/CS2030 q/What does OOP stand for? a/Object Oriented Programming</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
+<p><strong>Delete deck/card</strong> : <code>delete deck/card INDEX</code><br>
+e.g. <code>delete deck 3</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+<p><strong>Edit</strong> : <code>edit INDEX [d/TITLE] [t/TAG]&#8230;&#8203;</code><br>
+e.g. <code>edit 2 d/CS2103T t/</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
+<p><strong>Search deck/card</strong> : <code>search deck/card KEYWORD [&amp;] [MORE_KEYWORDS]</code><br>
+e.g. <code>search database &amp; relational</code></p>
+</li>
+<li>
+<p><strong>Test</strong> : <code>test INDEX</code><br>
+e.g. <code>test 1</code></p>
 </li>
 <li>
 <p><strong>List</strong> : <code>list</code></p>
@@ -881,4 +827,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-02 23:01:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-02 23:08:41 UTC</div></div></div></body></html>
