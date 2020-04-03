@@ -735,19 +735,55 @@ Format: <code>redo</code></p>
 </div>
 <div class="sect2">
 <h3 id="statistics"><a class="link" href="#statistics">3.15. Statistics</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Shows the number of Decks/Cards created and deleted, number of Test Sessions played, average correct percentage, average number of tries for each question.</p>
+</li>
+<li>
+<p>Includes a line graph of the history of test previous test results.</p>
+</li>
+</ul>
+</div>
 <div class="sect3">
 <h4 id="displaying-all-statistics-code-statistics-code"><a class="link" href="#displaying-all-statistics-code-statistics-code">3.15.1. Displaying all statistics: <code>statistics</code></a></h4>
 <div class="paragraph">
 <p>Displays the statistics across all decks.
 Format: <code>statistics</code></p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="displaying-statistics-of-a-certain-deck-statistics-index"><a class="link" href="#displaying-statistics-of-a-certain-deck-statistics-index">3.15.2. Displaying statistics of a certain Deck: 'statistics INDEX`</a></h4>
+<div class="paragraph">
+<p>Displays the statistics of a specific deck.
+Format: <code>statistics INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Average time spent on each deck, average number of questions completed per week, total number of questions completed for that week and the number of decks associated with each tag.</p>
+<p><code>statistics 2</code><br>
+Shows the statistics of the deck with the shown index of 2.</p>
 </li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="displaying-statistics-of-a-test-session-of-a-certain-deck-statistics-index-test_session_index"><a class="link" href="#displaying-statistics-of-a-test-session-of-a-certain-deck-statistics-index-test_session_index">3.15.3. Displaying statistics of a test session of a certain Deck: 'statistics INDEX TEST_SESSION_INDEX`</a></h4>
+<div class="paragraph">
+<p>Displays the statistics of a test session of a specific deck.
+Format: <code>statistics INDEX TEST_SESSION_INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>A graphical display in the form of a pie chart will also be used to represent the statistics.</p>
+<p><code>statistics 2 3</code><br>
+Shows the statistics of the 3rd test session of the deck with the shown index of 2.</p>
 </li>
 </ul>
 </div>
@@ -876,4 +912,4 @@ e.g. <code>test 1</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 04:58:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 05:40:47 UTC</div></div></div></body></html>
