@@ -59,7 +59,7 @@
 <p>Download the latest <code>cardibuddy.jar</code> <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your Cardi Buddy.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
@@ -230,7 +230,14 @@ Adds a new deck titled <code>CS1101S</code> with the tags <code>Easy</code> and 
 <h4 id="adding-a-card-code-add-c-deck_title-q-question-a-answer-code"><a class="link" href="#adding-a-card-code-add-c-deck_title-q-question-a-answer-code">3.2.2. Adding a card: <code>add c/DECK_TITLE q/QUESTION a/ANSWER</code></a></h4>
 <div class="paragraph">
 <p>Creates a new card to be added to the deck.
-Format: <code>add c/DECK_TITLE q/QUESTION a/ANSWER</code></p>
+Format: <code>add c/DECK_INDEX q/QUESTION a/ANSWER</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The deck specified in DECK_INDEX must be open for you to add a card.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -238,8 +245,9 @@ Format: <code>add c/DECK_TITLE q/QUESTION a/ANSWER</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>add c/CS1101S q/How does one go about solving recursion problems? a/Wishful thinking</code><br>
-Adds a new card belonging to the deck <code>CS1101S</code></p>
+<p><code>open 1</code><br>
+<code>add c/1 q/How does one go about solving recursion problems? a/Wishful thinking</code><br>
+Adds a new card belonging to the deck indexed at 1.</p>
 </li>
 </ul>
 </div>
@@ -251,7 +259,7 @@ Adds a new card belonging to the deck <code>CS1101S</code></p>
 <h4 id="opening-a-deck-code-open-code"><a class="link" href="#opening-a-deck-code-open-code">3.3.1. Opening a deck: <code>open</code></a></h4>
 <div class="paragraph">
 <p>Opens an existing deck in the library.
-Format: <code>open INDEX</code></p>
+Format: <code>open DECK_INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Shows a list of all the cards in the deck.<br>
@@ -265,12 +273,12 @@ Format: <code>open 1</code></p>
 <h4 id="editing-a-deck-code-edit-code"><a class="link" href="#editing-a-deck-code-edit-code">3.4.1. Editing a deck: <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing deck in the library.
-Format: <code>edit INDEX [d/TITLE] [t/TAG]…</code></p>
+Format: <code>edit DECK_INDEX [d/TITLE] [t/TAG]…</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the decks at the specified INDEX. The index refers to the index number shown in the complete list of decks. The index must be a positive integer 1, 2, 3, …</p>
+<p>Edits the decks at the specified DECK_INDEX. The index refers to the index number shown in the complete list of decks. The index must be a positive integer 1, 2, 3, …</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -307,12 +315,12 @@ Edits the title of the 2nd deck to be <code>CS2040</code> and clears all existin
 <h4 id="editing-a-card-code-edit-card-code-coming-in-v2-0"><a class="link" href="#editing-a-card-code-edit-card-code-coming-in-v2-0">3.4.2. Editing a card: <code>edit card</code> [coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Edits an existing card in the deck.
-Format: <code>edit card INDEX [q/QUESTION] [a/ANSWER] [t/TAG]…</code></p>
+Format: <code>edit card CARD_INDEX [q/QUESTION] [a/ANSWER] [t/TAG]…</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the card at the specified INDEX. The index refers to the index number shown in the complete list of decks. The index must be a positive integer 1, 2, 3, …</p>
+<p>Edits the card at the specified CARD_INDEX. The index refers to the index number shown in the complete list of decks. The index must be a positive integer 1, 2, 3, …</p>
 </li>
 <li>
 <p>At least one of the optional fields must be provided.</p>
@@ -371,12 +379,12 @@ Format: <code>clear</code></p>
 <h4 id="deleting-a-deck-code-delete-deck-code"><a class="link" href="#deleting-a-deck-code-delete-deck-code">3.7.1. Deleting a deck: <code>delete deck</code></a></h4>
 <div class="paragraph">
 <p>Deletes the specified deck from the library.
-Format: <code>delete deck INDEX</code></p>
+Format: <code>delete deck DECK_INDEX</code></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the deck at the specified INDEX.</p>
+<p>Deletes the deck at the specified DECK_INDEX.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the complete list of decks.</p>
@@ -491,7 +499,7 @@ Displays decks with both of the words <code>database</code> and <code>relational
 <h4 id="searching-for-a-card-code-search-card-code"><a class="link" href="#searching-for-a-card-code-search-card-code">3.8.2. Searching for a card: <code>search card</code></a></h4>
 <div class="paragraph">
 <p>Finds the cards with a question that contain any of the given keywords.
-Format: <code>search card [&amp;] [MORE_KEYWORDS]</code></p>
+Format: <code>search card KEYWORD [&amp;] [MORE_KEYWORDS]</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -912,4 +920,4 @@ e.g. <code>test 1</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-03 05:43:11 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-08 10:28:17 UTC</div></div></div></body></html>
