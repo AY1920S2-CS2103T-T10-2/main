@@ -31,7 +31,7 @@
 <li><a href="#statistics">3.16. Statistics</a></li>
 <li><a href="#syncing-across-multiple-platforms-sync-coming-in-v2-0">3.17. Syncing across multiple platforms: sync [coming in v2.0]</a></li>
 <li><a href="#playing-memory-games-game-coming-in-v2-0">3.18. Playing memory games: game [coming in v2.0]</a></li>
-<li><a href="#customising-flashcards-custom-coming-in-v2-0">3.19. Customising flashcards: custom [coming in v2.0]</a></li>
+<li><a href="#customising-flashcards-ui-custom-coming-in-v2-0">3.19. Customising flashcards UI: custom [coming in v2.0]</a></li>
 <li><a href="#replacing-image-coming-in-v2-0">3.20. Replacing image [coming in v2.0]</a></li>
 </ul>
 </li>
@@ -64,7 +64,7 @@
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
-<div class="imageblock">
+<div class="imageblock" style="text-align: center">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
 </div>
@@ -242,11 +242,54 @@ Adds a new deck titled <code>CS1101S</code> with the tags <code>Easy</code> and 
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-a-card-code-add-c-deck_title-q-question-a-answer-code"><a class="link" href="#adding-a-card-code-add-c-deck_title-q-question-a-answer-code">3.3.2. Adding a card: <code>add c/DECK_TITLE q/QUESTION a/ANSWER</code></a></h4>
+<h4 id="adding-a-normal-card-code-add-c-deck_index-q-question-a-answer-code"><a class="link" href="#adding-a-normal-card-code-add-c-deck_index-q-question-a-answer-code">3.3.2. Adding a normal card: <code>add c/DECK_INDEX q/QUESTION a/ANSWER</code></a></h4>
 <div class="paragraph">
 <p>Creates a new card to be added to the deck.
-Format: <code>add c/DECK_INDEX q/QUESTION a/ANSWER</code>
-* The deck specified in DECK_INDEX must be open for you to add a card.</p>
+Format: <code>add c/DECK_INDEX q/QUESTION a/ANSWER</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The deck specified in DECK_INDEX must be open for you to add a card.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>open 2</code><br>
+<code>add c/2 q/How does one go about solving recursion problems? a/Wishful thinking</code><br>
+Adds a new card belonging to the deck indexed at 2.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/AddCard.png" alt="AddCard" width="800">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-an-image-card-code-add-p-file-file_path_to_image-c-deck_index-q-question-a-answer-code"><a class="link" href="#adding-an-image-card-code-add-p-file-file_path_to_image-c-deck_index-q-question-a-answer-code">3.3.3. Adding an image card: <code>add p/file:FILE_PATH_TO_IMAGE c/DECK_INDEX q/QUESTION a/ANSWER</code></a></h4>
+<div class="paragraph">
+<p>Creates a new image card to be added to the deck.
+Format: <code>add p/file:FILE_PATH_TO_IMAGE c/DECK_INDEX q/QUESTION a/ANSWER</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The deck specified in DECK_INDEX must be open for you to add a card.</p>
+</li>
+<li>
+<p>The images can only be PNG or JPG files.</p>
+</li>
+<li>
+<p>The FILE_PATH_TO_IMAGE must end with .png or .jpg suffix.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -255,10 +298,33 @@ Format: <code>add c/DECK_INDEX q/QUESTION a/ANSWER</code>
 <ul>
 <li>
 <p><code>open 1</code><br>
-<code>add c/1 q/How does one go about solving recursion problems? a/Wishful thinking</code><br>
-Adds a new card belonging to the deck indexed at 1.</p>
+<code>add p/file:/Users/qiujingying/Documents/GitHub/cs2103/main/docs/images/ArchitectureDiagram.png c/1 q/What type of diagram is this? a/Architecture Diagram</code><br>
+Adds a new card with an image belonging to the deck indexed at 1.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/AddImageCard.png" alt="AddImageCard" width="800">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can drag and drop the image you want to add into a terminal window to obtain its file path. File paths may differ across operating systems (Windows vs Mac).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-an-image-card-via-the-image-button-code-c-deck_index-q-question-a-answer-code"><a class="link" href="#adding-an-image-card-via-the-image-button-code-c-deck_index-q-question-a-answer-code">3.3.4. Adding an image card via the Image button: <code>c/DECK_INDEX q/QUESTION a/ANSWER</code></a></h4>
+<div class="paragraph">
+<p>Shortcut for users who do not want to search for the file path.</p>
 </div>
 </div>
 </div>
@@ -823,7 +889,7 @@ Shows the statistics of the 3rd test session of the deck with the shown index of
 
 </div>
 <div class="sect2">
-<h3 id="customising-flashcards-custom-coming-in-v2-0"><a class="link" href="#customising-flashcards-custom-coming-in-v2-0">3.19. Customising flashcards: custom [coming in v2.0]</a></h3>
+<h3 id="customising-flashcards-ui-custom-coming-in-v2-0"><a class="link" href="#customising-flashcards-ui-custom-coming-in-v2-0">3.19. Customising flashcards UI: custom [coming in v2.0]</a></h3>
 
 </div>
 <div class="sect2">
@@ -851,8 +917,12 @@ Shows the statistics of the 3rd test session of the deck with the shown index of
 e.g. <code>add d/CS2030 t/Fundamentals t/Medium</code></p>
 </li>
 <li>
-<p><strong>Add card</strong> : <code>add c/TITLE q/QUESTION a/ANSWER</code><br>
-e.g. <code>add c/CS2030 q/What does OOP stand for? a/Object Oriented Programming</code></p>
+<p><strong>Add normal card</strong> : <code>add c/DECK_INDEX q/QUESTION a/ANSWER</code><br>
+e.g. <code>add c/1 q/What does OOP stand for? a/Object Oriented Programming</code></p>
+</li>
+<li>
+<p><strong>Add image card</strong> : <code>add p/file:FILE_PATH_TO_IMAGE c/DECK_INDEX q/QUESTION a/ANSWER</code><br>
+e.g. <code>add p/file:/Users/foo/ObjectDiagram.png c/1 q/Which SOLID principle did the code not adhere to? a/Single Responsibility Principle</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
@@ -918,4 +988,4 @@ e.g. <code>test 1</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 06:50:05 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-10 06:51:58 UTC</div></div></div></body></html>
