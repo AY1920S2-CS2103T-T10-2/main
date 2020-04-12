@@ -23,16 +23,15 @@
 <li><a href="#deleting">3.8. Deleting</a></li>
 <li><a href="#searching">3.9. Searching</a></li>
 <li><a href="#filtering">3.10. Filtering</a></li>
-<li><a href="#prioritising">3.11. Prioritising</a></li>
-<li><a href="#testing">3.12. Testing</a></li>
-<li><a href="#displaying-history">3.13. Displaying History</a></li>
-<li><a href="#undo-redo">3.14. Undo/Redo</a></li>
-<li><a href="#detecting-duplicates">3.15. Detecting duplicates</a></li>
-<li><a href="#statistics">3.16. Statistics</a></li>
-<li><a href="#syncing-across-multiple-platforms-sync-coming-in-v2-0">3.17. Syncing across multiple platforms: sync [coming in v2.0]</a></li>
-<li><a href="#playing-memory-games-game-coming-in-v2-0">3.18. Playing memory games: game [coming in v2.0]</a></li>
-<li><a href="#customising-flashcards-ui-custom-coming-in-v2-0">3.19. Customising flashcards UI: custom [coming in v2.0]</a></li>
-<li><a href="#replacing-image-coming-in-v2-0">3.20. Replacing image [coming in v2.0]</a></li>
+<li><a href="#testing">3.11. Testing</a></li>
+<li><a href="#displaying-history">3.12. Displaying History</a></li>
+<li><a href="#undo-redo">3.13. Undo/Redo</a></li>
+<li><a href="#detecting-duplicates">3.14. Detecting duplicates</a></li>
+<li><a href="#statistics">3.15. Statistics</a></li>
+<li><a href="#syncing-across-multiple-platforms-sync-coming-in-v2-0">3.16. Syncing across multiple platforms: sync [coming in v2.0]</a></li>
+<li><a href="#playing-memory-games-game-coming-in-v2-0">3.17. Playing memory games: game [coming in v2.0]</a></li>
+<li><a href="#customising-flashcards-ui-custom-coming-in-v2-0">3.18. Customising flashcards UI: custom [coming in v2.0]</a></li>
+<li><a href="#replacing-image-coming-in-v2-0">3.19. Replacing image [coming in v2.0]</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -652,32 +651,53 @@ Displays decks with the tag <code>hard</code>.</p>
 </li>
 <li>
 <p><code>filter hard &amp; coremodule</code><br>
-Displays decks with both the tags <code>hard</code> and <code>coremodule</code>.</p>
+Displays decks with both the tags <code>hard</code> and <code>coremodule</code>.
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="prioritising"><a class="link" href="#prioritising">3.11. Prioritising</a></h3>
+<h3 id="testing"><a class="link" href="#testing">3.11. Testing</a></h3>
 <div class="paragraph">
-<p>Cards that the user has answered wrongly to (user input does not match with answer) is automatically moved to the back of the testing session. The user will be able to reattempt the same flashcard again later in the testing session.</p>
+<p>Of course, you did not create all those decks and flashcards just so you can admire them! It&#8217;s time to get your revision on. Start a <code>test session</code> for a deck to begin testing yourself!</p>
 </div>
 <div class="paragraph">
-<p>There is no need to prioritise manually.</p>
+<p>A <code>test session</code> works just like how flashcard testing works in real life - You look at the question, think of the answer, and 'flip' the card around to see if your answer matches the one on the flashcard.</p>
 </div>
+<div class="paragraph">
+<p>The difference here is that you do not need to manually keep track of how many flashcards you got right and wrong&#8201;&#8212;&#8201;CardiBuddy does all that for you!</p>
 </div>
-<div class="sect2">
-<h3 id="testing"><a class="link" href="#testing">3.12. Testing</a></h3>
 <div class="sect3">
-<h4 id="starting-a-test-session-for-a-deck-code-test-index-code"><a class="link" href="#starting-a-test-session-for-a-deck-code-test-index-code">3.12.1. Starting a test session for a deck: <code>test INDEX</code></a></h4>
+<h4 id="retesting"><a class="link" href="#retesting">3.11.1. Retesting</a></h4>
 <div class="paragraph">
-<p>Replace <code>INDEX</code> with the index number of the deck you wish to test, which can be found in the list view of all your decks.</p>
+<p>A <code>test session</code> in CardiBuddy is special - it includes a <strong>retesting</strong> feature to make sure you know your content well.</p>
 </div>
 <div class="paragraph">
-<p>What it does:
-* A test session will immediately replace the normal deck and flashcard list view.
-* The first question of the test session will be displayed.</p>
+<p>When you answer a flashcard&#8217;s question wrongly, you will encounter it again later on in the same <code>test session</code>. There is no need to do this manually - CardiBuddy does this for you too.</p>
+</div>
+<div class="paragraph">
+<p>Hence if you keep getting a question wrong, a <code>test session</code> can go on and on forever - unless you finally get it right, or you quit the test session!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="starting-a-test-session-for-a-deck-code-test-index-code"><a class="link" href="#starting-a-test-session-for-a-deck-code-test-index-code">3.11.2. Starting a test session for a deck: <code>test INDEX</code></a></h4>
+<div class="paragraph">
+<p>To start your <code>test session</code>, replace <code>INDEX</code> with the index number of the deck you wish to test. This number will be to the <em>left</em> of the title of your deck, when you are viewing all your decks as a list.</p>
+</div>
+<div class="paragraph">
+<p>What this command does:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A test session will immediately replace the normal deck and flashcard list view.</p>
+</li>
+<li>
+<p>The first question of the test session will be displayed.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Example Usage:</p>
@@ -692,15 +712,25 @@ Creates a test session for the 1st deck.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="answering-a-question-code-ans-your-answer-code"><a class="link" href="#answering-a-question-code-ans-your-answer-code">3.12.2. Answering a question: <code>ans YOUR ANSWER</code></a></h4>
+<h4 id="to-answer-the-question-code-ans-your_answer-code"><a class="link" href="#to-answer-the-question-code-ans-your_answer-code">3.11.3. To answer the question: <code>ans YOUR_ANSWER</code></a></h4>
 <div class="paragraph">
 <p>Replace <code>YOUR ANSWER</code> with your answer to the displayed question.</p>
 </div>
 <div class="paragraph">
-<p>What it does:
-* Submits your answer, and checks your answer against the flashcard&#8217;s stored answer
-* Displays the result of your answer (CORRECT or WRONG)
-* Displays your answer and the flashcard&#8217;s answer</p>
+<p>What this command does:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Submits your answer, and checks your answer against the flashcard&#8217;s stored answer</p>
+</li>
+<li>
+<p>Displays the result of your answer (CORRECT or WRONG)</p>
+</li>
+<li>
+<p>Displays your answer and the flashcard&#8217;s answer</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Example Usage:</p>
@@ -715,9 +745,9 @@ To answer the question: "What is the name of this application?"</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="don-t-want-to-answer-use-code-skip-code"><a class="link" href="#don-t-want-to-answer-use-code-skip-code">3.12.3. Don&#8217;t want to answer? Use: <code>skip</code></a></h4>
+<h4 id="don-t-want-to-answer-skip-a-question-with-code-skip-code"><a class="link" href="#don-t-want-to-answer-skip-a-question-with-code-skip-code">3.11.4. Don&#8217;t want to answer? Skip a question with: <code>skip</code></a></h4>
 <div class="paragraph">
-<p>What it does:</p>
+<p>What this command does:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -725,40 +755,73 @@ To answer the question: "What is the name of this application?"</p>
 <p>If you already know the answer to the question, and don&#8217;t want to waste your time answering it, just type <code>skip</code> to go to the next question.</p>
 </li>
 <li>
-<p>CardiB will not note down this flashcard in your test history, and will merely remove it from your current test session.</p>
+<p>Your skipped flashcard will not impact your overall test score, and CardiBuddy will merely remove it from your current test session.</p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="force-correct-an-answer-code-force-code"><a class="link" href="#force-correct-an-answer-code-force-code">3.12.4. Force correct an answer: <code>force</code></a></h4>
 <div class="paragraph">
-<p>What it does:</p>
+<p>Note:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>CardiB takes your answer word for word when checking against the flashcard&#8217;s model answer.</p>
+<p>You can use this command if either:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>You have not answered the question.</p>
 </li>
 <li>
-<p>If your answer differs by the model answer, it will be marked as wrong.</p>
+<p>You have answered the question, but you got it wrong.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>After viewing the model answer, if you feel that your answer still captures the gist of what the question wants, you can <code>force</code> your answer to be marked as correct.</p>
+<p>CardiBuddy will not let you use <code>skip</code> if you have already gotten that question correct.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="go-to-the-next-question-code-next-code"><a class="link" href="#go-to-the-next-question-code-next-code">3.12.5. Go to the next question: <code>next</code></a></h4>
+<h4 id="to-force-your-wrong-answer-to-be-marked-as-correct-code-force-code"><a class="link" href="#to-force-your-wrong-answer-to-be-marked-as-correct-code-force-code">3.11.5. To force your wrong answer to be marked as correct: <code>force</code></a></h4>
 <div class="paragraph">
-<p>What it does:</p>
+<p>What this command does:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CardiBuddy&#8217;s uses automated marking to mark your answers. It takes your answer <em>word for word</em> when checking against the model answer stored in your flashcard.</p>
+</li>
+<li>
+<p>If your answer differs from the model answer, it will be marked as wrong.</p>
+</li>
+<li>
+<p>After submitting your answer, you will get to see the model answer and your answer, for you to compare them.</p>
+</li>
+<li>
+<p>If you feel that your answer still meets the question&#8217;s requirements, you can <code>force</code> your answer to be marked as correct.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="to-go-to-the-next-question-code-next-code"><a class="link" href="#to-go-to-the-next-question-code-next-code">3.11.6. To go to the next question: <code>next</code></a></h4>
+<div class="paragraph">
+<p>What this command does:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p>After submitting your answer, type <code>next</code> to go to the next question (if there are any left to test).</p>
 </li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>You can only type <code>next</code> once you have submitted your answer.</p>
 </li>
@@ -766,9 +829,9 @@ To answer the question: "What is the name of this application?"</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="quit-the-test-session-halfway-code-quit-code"><a class="link" href="#quit-the-test-session-halfway-code-quit-code">3.12.6. Quit the test session halfway: <code>quit</code></a></h4>
+<h4 id="quit-the-test-session-halfway-code-quit-code"><a class="link" href="#quit-the-test-session-halfway-code-quit-code">3.11.7. Quit the test session halfway: <code>quit</code></a></h4>
 <div class="paragraph">
-<p>What it does:</p>
+<p>What this command does:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -780,9 +843,9 @@ To answer the question: "What is the name of this application?"</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="displaying-history"><a class="link" href="#displaying-history">3.13. Displaying History</a></h3>
+<h3 id="displaying-history"><a class="link" href="#displaying-history">3.12. Displaying History</a></h3>
 <div class="sect3">
-<h4 id="displaying-the-command-history-history"><a class="link" href="#displaying-the-command-history-history">3.13.1. Displaying the command history: 'history'</a></h4>
+<h4 id="displaying-the-command-history-history"><a class="link" href="#displaying-the-command-history-history">3.12.1. Displaying the command history: 'history'</a></h4>
 <div class="paragraph">
 <p>Displays all the commands that has been inputted by the user during the current session.
 Format: 'history'</p>
@@ -790,16 +853,16 @@ Format: 'history'</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo"><a class="link" href="#undo-redo">3.14. Undo/Redo</a></h3>
+<h3 id="undo-redo"><a class="link" href="#undo-redo">3.13. Undo/Redo</a></h3>
 <div class="sect3">
-<h4 id="undoing-command-code-undo-code"><a class="link" href="#undoing-command-code-undo-code">3.14.1. Undoing command: <code>undo</code></a></h4>
+<h4 id="undoing-command-code-undo-code"><a class="link" href="#undoing-command-code-undo-code">3.13.1. Undoing command: <code>undo</code></a></h4>
 <div class="paragraph">
 <p>Undoes latest command.
 Format: <code>undo</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="redoing-command-code-redo-code"><a class="link" href="#redoing-command-code-redo-code">3.14.2. Redoing command: <code>redo</code></a></h4>
+<h4 id="redoing-command-code-redo-code"><a class="link" href="#redoing-command-code-redo-code">3.13.2. Redoing command: <code>redo</code></a></h4>
 <div class="paragraph">
 <p>Redoes latest command.
 Format: <code>redo</code></p>
@@ -807,15 +870,15 @@ Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="detecting-duplicates"><a class="link" href="#detecting-duplicates">3.15. Detecting duplicates</a></h3>
+<h3 id="detecting-duplicates"><a class="link" href="#detecting-duplicates">3.14. Detecting duplicates</a></h3>
 <div class="sect3">
-<h4 id="detecting-duplicate-deck"><a class="link" href="#detecting-duplicate-deck">3.15.1. Detecting duplicate deck</a></h4>
+<h4 id="detecting-duplicate-deck"><a class="link" href="#detecting-duplicate-deck">3.14.1. Detecting duplicate deck</a></h4>
 <div class="paragraph">
 <p>Upon adding a new deck, the application automatically checks if there are any existing decks with the same title. Only decks with unique titles can be successfully added.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="detecting-duplicate-card"><a class="link" href="#detecting-duplicate-card">3.15.2. Detecting duplicate card</a></h4>
+<h4 id="detecting-duplicate-card"><a class="link" href="#detecting-duplicate-card">3.14.2. Detecting duplicate card</a></h4>
 <div class="paragraph">
 <p>Upon adding a new card to a specific deck, the application automatically checks if there are any existing cards with the same question in that deck. Only cards with unique questions can be successfully added.</p>
 </div>
@@ -825,7 +888,7 @@ Format: <code>redo</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="statistics"><a class="link" href="#statistics">3.16. Statistics</a></h3>
+<h3 id="statistics"><a class="link" href="#statistics">3.15. Statistics</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -837,14 +900,14 @@ Format: <code>redo</code></p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="displaying-all-statistics-code-statistics-code"><a class="link" href="#displaying-all-statistics-code-statistics-code">3.16.1. Displaying all statistics: <code>statistics</code></a></h4>
+<h4 id="displaying-all-statistics-code-statistics-code"><a class="link" href="#displaying-all-statistics-code-statistics-code">3.15.1. Displaying all statistics: <code>statistics</code></a></h4>
 <div class="paragraph">
 <p>Displays the statistics across all decks.
 Format: <code>statistics</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="displaying-statistics-of-a-certain-deck-code-statistics-code"><a class="link" href="#displaying-statistics-of-a-certain-deck-code-statistics-code">3.16.2. Displaying statistics of a certain Deck: <code>statistics</code></a></h4>
+<h4 id="displaying-statistics-of-a-certain-deck-code-statistics-code"><a class="link" href="#displaying-statistics-of-a-certain-deck-code-statistics-code">3.15.2. Displaying statistics of a certain Deck: <code>statistics</code></a></h4>
 <div class="paragraph">
 <p>Displays the statistics of a specific deck.
 Format: <code>statistics INDEX</code></p>
@@ -862,7 +925,7 @@ Shows the statistics of the deck with the shown index of 2.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="displaying-statistics-of-a-test-session-of-a-certain-deck-code-statistics-code"><a class="link" href="#displaying-statistics-of-a-test-session-of-a-certain-deck-code-statistics-code">3.16.3. Displaying statistics of a test session of a certain Deck: <code>statistics</code></a></h4>
+<h4 id="displaying-statistics-of-a-test-session-of-a-certain-deck-code-statistics-code"><a class="link" href="#displaying-statistics-of-a-test-session-of-a-certain-deck-code-statistics-code">3.15.3. Displaying statistics of a test session of a certain Deck: <code>statistics</code></a></h4>
 <div class="paragraph">
 <p>Displays the statistics of a test session of a specific deck.
 Format: <code>statistics INDEX TEST_SESSION_INDEX</code></p>
@@ -881,19 +944,19 @@ Shows the statistics of the 3rd test session of the deck with the shown index of
 </div>
 </div>
 <div class="sect2">
-<h3 id="syncing-across-multiple-platforms-sync-coming-in-v2-0"><a class="link" href="#syncing-across-multiple-platforms-sync-coming-in-v2-0">3.17. Syncing across multiple platforms: sync [coming in v2.0]</a></h3>
+<h3 id="syncing-across-multiple-platforms-sync-coming-in-v2-0"><a class="link" href="#syncing-across-multiple-platforms-sync-coming-in-v2-0">3.16. Syncing across multiple platforms: sync [coming in v2.0]</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="playing-memory-games-game-coming-in-v2-0"><a class="link" href="#playing-memory-games-game-coming-in-v2-0">3.18. Playing memory games: game [coming in v2.0]</a></h3>
+<h3 id="playing-memory-games-game-coming-in-v2-0"><a class="link" href="#playing-memory-games-game-coming-in-v2-0">3.17. Playing memory games: game [coming in v2.0]</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="customising-flashcards-ui-custom-coming-in-v2-0"><a class="link" href="#customising-flashcards-ui-custom-coming-in-v2-0">3.19. Customising flashcards UI: custom [coming in v2.0]</a></h3>
+<h3 id="customising-flashcards-ui-custom-coming-in-v2-0"><a class="link" href="#customising-flashcards-ui-custom-coming-in-v2-0">3.18. Customising flashcards UI: custom [coming in v2.0]</a></h3>
 
 </div>
 <div class="sect2">
-<h3 id="replacing-image-coming-in-v2-0"><a class="link" href="#replacing-image-coming-in-v2-0">3.20. Replacing image [coming in v2.0]</a></h3>
+<h3 id="replacing-image-coming-in-v2-0"><a class="link" href="#replacing-image-coming-in-v2-0">3.19. Replacing image [coming in v2.0]</a></h3>
 
 </div>
 </div>
@@ -988,4 +1051,4 @@ e.g. <code>test 1</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 09:07:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 11:28:43 UTC</div></div></div></body></html>
