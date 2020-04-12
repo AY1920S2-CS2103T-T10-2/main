@@ -38,7 +38,15 @@
 <li><a href="#dev-ops">7. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-starting-a-test-session">C.1. Use case: Starting a test session</a></li>
+<li><a href="#use-case-submitting-an-answer">C.2. Use case: Submitting an answer</a></li>
+<li><a href="#use-case-skipping-a-question">C.3. Use case: Skipping a question</a></li>
+<li><a href="#use-case-forcing-a-wrong-answer-to-be-marked-correct">C.4. Use case: Forcing a wrong answer to be marked correct</a></li>
+<li><a href="#use-case-going-to-the-next-question">C.5. Use case: Going to the next question</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#product-survey">Appendix F: Product Survey</a></li>
@@ -305,7 +313,16 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </ol>
 </div>
 <div class="paragraph">
-<p>The following diagram illustrates how the <code>LogicToUiManager</code> can be used to modify the <code>MainWindow</code>.</p>
+<p>The following sequence diagram illustrates how the <code>LogicToUiManager</code> can be used to modify the <code>MainWindow</code>, when CardiBuddy needs to display the flashcard question to the user during a <code>Test Session</code>. More details on <code>Test Session</code> in the section: <a href="#test-session">[test-session]</a>.</p>
+</div>
+<div class="paragraph">
+<p>This diagram is also an extension of the <a href="#test-sequence-diagram">sequence diagram</a> found in that section.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/LogicToUiSequenceDiagram.png" alt="LogicToUiSequenceDiagram">
+</div>
+<div class="title">Figure 7. Sequence diagram showing how LogicToUiManager accesses the Ui to display a question during a test session.</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Model"><a class="link" href="#Design-Model">3.1. Model component</a></h3>
@@ -313,7 +330,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram">
 </div>
-<div class="title">Figure 7. Structure of the Model Component</div>
+<div class="title">Figure 8. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -358,7 +375,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>CardiBuddy</c
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram">
 </div>
-<div class="title">Figure 8. Structure of the Storage Component</div>
+<div class="title">Figure 9. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -651,11 +668,37 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 <div class="paragraph">
 <p>A flashcard application is not complete without the ability to test oneself.</p>
 </div>
+<div class="sect4">
+<h5 id="model-component"><a class="link" href="#model-component">Model Component</a></h5>
 <div class="paragraph">
-<p>The Test Feature makes use of 2 classes in the <code>Model</code> component: <code>TestSession</code> and <code>TestResult</code>, as well as a <code>Result</code> enums class as only one of 3 result outcomes are allowed for a flashcard - wrong, correct or skipped.</p>
+<p>The following classes can be found inside <em>cardibuddy/model/testsession</em>.</p>
 </div>
 <div class="paragraph">
-<p>During a test session:</p>
+<p>The test feature revolves around 2 classes: <code>TestSession</code> and <code>TestResult</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>TestSession</code> stores the tested deck, retrieves the questions to be tested, acts according to the user&#8217;s commands and manages the <a href="#test-queue">test queue</a>.</p>
+</div>
+<div class="paragraph">
+<p><code>TestResult</code> stores the <code>Result</code> (explained below) of each <em>individual</em> test on a flashcard. That is, whether the flashcard was answered wrongly, correctly, or was skipped. <code>Result</code> is an enums class to store these 3 outcomes.</p>
+</div>
+<div class="paragraph">
+<p>Another enums class used is <code>AnswerType</code> which contains 3 answering options to display to the user - True/False, MCQ or Short Answer.</p>
+</div>
+<div class="paragraph">
+<p>To ensure good design practice, <code>Test Session</code> is not exposed to the other classes, but is instead called using the <code>ModelManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>Click <a href="#Design-Model">here</a> to view the class diagram for the <code>Model</code> component, to see how the above classes interact with other classes within <code>Model</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="logic-component"><a class="link" href="#logic-component">Logic Component</a></h5>
+<div class="paragraph">
+<p>The test feature makes use of a suite of <code>Command</code> classes exclusive to a <code>TestSession</code>. These <code>Command</code> classes are part of the <strong>Logic</strong> component of CardiBuddy, and can be found within the <em>cardibuddy/logic/testsession</em> package.</p>
+</div>
+<div class="paragraph">
+<p>These commands allow the user to perform the following during a test session:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -680,9 +723,9 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 </ul>
 </div>
 <div class="paragraph">
-<p>The above commands can only be triggered when certain conditions are met. The following table provides a summary of all the <code>Command</code> classes related to the test feature. These classes are part of the <strong>Logic</strong> component, and can be found in the <strong>testsession</strong> package.</p>
+<p>The above commands can only be triggered when certain conditions are met. The following table provides a summary of all the <code>Command</code> classes related to the test feature, as well as the conditions for their execution and exceptions thrown when these conditions are not met.</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
+<table class="tableblock frame-all grid-all" style="width: 59%;">
 <caption class="title">Table 1. Summary of Test Feature Commands</caption>
 <colgroup>
 <col style="width: 5%;">
@@ -746,6 +789,7 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 </tbody>
 </table>
 </div>
+</div>
 <div class="sect3">
 <h4 id="using-the-test-feature"><a class="link" href="#using-the-test-feature">4.3.2. Using the test feature</a></h4>
 <div class="sect4">
@@ -766,11 +810,11 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 <div class="paragraph">
 <p>The following is a UML Sequence Diagram of how a <code>TestSession</code> object is created when the <code>test INDEX</code> command is called:</p>
 </div>
-<div class="imageblock">
+<div id="test-sequence-diagram" class="imageblock">
 <div class="content">
 <img src="images/TestSequenceDiagram.png" alt="TestSequenceDiagram">
 </div>
-<div class="title">Figure 9. A sequence diagram illustrating the logic flow when a TestSession is created. The first question in the provided deck will immediately be displayed.</div>
+<div class="title">Figure 10. A sequence diagram illustrating the logic flow when a TestSession is created. The first question in the provided deck will immediately be displayed.</div>
 </div>
 </div>
 <div class="sect4">
@@ -804,7 +848,7 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 <div class="content">
 <img src="images/TestSessionActivityDiagram.png" alt="TestSessionActivityDiagram">
 </div>
-<div class="title">Figure 10. Overall activity diagram for the different use cases, extension cases omitted.</div>
+<div class="title">Figure 11. Overall activity diagram for the different use cases, extension cases omitted.</div>
 </div>
 <div class="paragraph">
 <p>For more descriptive use case scenarios from a user perspectives, please take a look at <a href="#use-cases">Appendix C, <em>Use Cases</em></a>.</p>
@@ -1162,7 +1206,9 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>CardiBuddy</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-start-a-test-session" class="discrete">Use case: Start a test session</h3>
+<h3 id="test-sessions" class="discrete">Test Sessions</h3>
+<div class="sect2">
+<h3 id="use-case-starting-a-test-session"><a class="link" href="#use-case-starting-a-test-session">C.1. Use case: Starting a test session</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1172,24 +1218,12 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 <p>User requests to start a test session with a chosen deck.</p>
 </li>
 <li>
-<p>CardiBuddy shows the user the questions in the flashcards, one by one</p>
+<p>CardiBuddy displays the test session page to the user, with the first question displayed.</p>
 </li>
 <li>
-<p>User inputs the correct answer</p>
-</li>
-<li>
-<p>CardiBuddy compares the user&#8217;s input with the flashcard&#8217;s stored answer, and shows the user the outcome (CORRECT) as well as the flashcard&#8217;s stored answer.</p>
-</li>
-<li>
-<p>The user chooses to go to the next flashcard</p>
-</li>
-<li>
-<p>CardiBuddy removes the flashcard from the <a href="#test-queue">test queue</a>.</p>
-</li>
-<li>
-<p>CardiBuddy shows user the question on the next flashcard in the queue.</p>
+<p>CardiBuddy awaits the user&#8217;s answer.</p>
 <div class="paragraph">
-<p>Use case ends when there are no more flashcards in the test queue.</p>
+<p>Use case ends.</p>
 </div>
 </li>
 </ol>
@@ -1200,7 +1234,7 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>1a. The given index is invalid.</p>
+<p>1a. The given index is invalid</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1224,20 +1258,45 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="use-case-submitting-an-answer"><a class="link" href="#use-case-submitting-an-answer">C.2. Use case: Submitting an answer</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User submits their answer to a question not tested before.</p>
+</li>
+<li>
+<p>CardiBuddy gets the result of the user&#8217;s answer. The user answered the question correctly.</p>
+</li>
+<li>
+<p>CardiBuddy creates a new record for this flashcard to save this correct result.</p>
+</li>
+<li>
+<p>CardiBuddy displays the result to the user.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
 <div class="paragraph">
 <p><strong>Inclusions</strong></p>
 </div>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a. The user inputs the wrong answer</p>
+<p>1a. The current flashcard has been answered before.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>i. When the user chooses to show the next flash card, CardiBuddy adds the flashcard that was wrongly answered to the back of the test queue, to test again later.</p>
+<p>i. CardiBuddy modifies its records by increasing the number of tries logged for this flashcard.</p>
 </li>
 <li>
-<p>ii. Use case resumes at 4.</p>
+<p>ii. Use case resumes at step 3.</p>
 </li>
 </ul>
 </div>
@@ -1247,17 +1306,203 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>5a. The user forces CardiBuddy to mark the flashcard as correct, despite the user&#8217;s answer and flashcard&#8217;s answers not matching up. <em>(for non-MCQ and non-True-False questions)</em></p>
+<p>2a. The user got the question wrong.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>i. Use case resumes at 6.</p>
+<p>i. CardiBuddy creates a new record for this flashcard to save this wrong result.</p>
+</li>
+<li>
+<p>ii. CardiBuddy appends this flashcard to the back of the queue for retesting later.</p>
+</li>
+<li>
+<p>iii. Use case resumes at step 4.</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="use-case-skipping-a-question"><a class="link" href="#use-case-skipping-a-question">C.3. Use case: Skipping a question</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to skip the current question.</p>
+</li>
+<li>
+<p>CardiBuddy modifies its records to show that this flashcard was skipped</p>
+</li>
+<li>
+<p>CardiBuddy removes the next flashcard in the queue.</p>
+</li>
+<li>
+<p>CardiBuddy displays the question on this flashcard to the user.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user has already answered this question correctly</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy shows an error message and prompts user to type 'next' instead</p>
+</li>
+<li>
+<p>ii. Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Inclusions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The user has already answered this question wrongly</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy removes this flashcard, that was set to be retested, from the back of the queue</p>
+</li>
+<li>
+<p>ii. Use case resumes at step 2.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-forcing-a-wrong-answer-to-be-marked-correct"><a class="link" href="#use-case-forcing-a-wrong-answer-to-be-marked-correct">C.4. Use case: Forcing a wrong answer to be marked correct</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to force their answer to be marked as correct</p>
+</li>
+<li>
+<p>CardiBuddy acknowledges the user&#8217;s request and changes the recorded result for this flashcard
++ Use case ends.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user has not answered the question yet</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy shows an error message and tells the user to answer the question first, or skip it</p>
+</li>
+<li>
+<p>ii. Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user is trying to force correct their already correct answer</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy shows an error message and prompts the user to type 'next'</p>
+</li>
+<li>
+<p>ii. Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-going-to-the-next-question"><a class="link" href="#use-case-going-to-the-next-question">C.5. Use case: Going to the next question</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to go to the next question.</p>
+</li>
+<li>
+<p>CardiBuddy removes the next flashcard in the queue and displays its question to the user.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Inclusions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. There are no more flashcards in the queue</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy ends the test session, and returns the user to the home page</p>
+</li>
+<li>
+<p>ii. Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The user has not answered the question yet</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy shows an error message and prompts the user to answer the question or skip it.</p>
+</li>
+<li>
+<p>ii. Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="adding-decks-and-flashcards"><a class="link" href="#adding-decks-and-flashcards">C.5.1. Adding Decks and Flashcards</a></h4>
 <h3 id="use-case-add-a-new-deck" class="discrete">Use case: Add a new deck</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
@@ -1320,6 +1565,8 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 </div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1624,4 +1871,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 13:56:45 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 16:24:05 UTC</div></div></div></body></html>
