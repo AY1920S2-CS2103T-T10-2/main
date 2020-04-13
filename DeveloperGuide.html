@@ -29,8 +29,9 @@
 <li><a href="#undo-redo-feature">4.1. Undo/Redo feature</a></li>
 <li><a href="#flashcards">4.2. Flashcards</a></li>
 <li><a href="#test-feature">4.3. Test feature</a></li>
-<li><a href="#logging">4.4. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.5. Configuration</a></li>
+<li><a href="#statistics">4.4. Statistics</a></li>
+<li><a href="#logging">4.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -978,14 +979,71 @@ to help in pinpointing the input errors.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.4. Logging</a></h3>
+<h3 id="statistics"><a class="link" href="#statistics">4.4. Statistics</a></h3>
+<div class="sect3">
+<h4 id="design-5"><a class="link" href="#design-5">4.4.1. Design</a></h4>
+<div class="paragraph">
+<p>The user&#8217;s activities will be logged and stored in <code>Statistics</code>. It is entirely a data storage class, recording data wherever necessary.</p>
+</div>
+<div class="paragraph">
+<p>Currently, the actions that update the <code>Statistics</code> are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adding and removing a deck</p>
+</li>
+<li>
+<p>Adding and removing a card</p>
+</li>
+<li>
+<p>Finishing a <code>TestSession</code> - this updates a number of items, which are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TestSessions</code> finished</p>
+</li>
+<li>
+<p>Total cards answered</p>
+</li>
+<li>
+<p>Average correct percentage</p>
+</li>
+<li>
+<p>Average tries to get correct</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There&#8217;s 2 different locations where a <code>Statistics</code> instance is stored:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CardiBuddy</code>: The Model of the program. Tracks user statistics across the whole program.</p>
+</li>
+<li>
+<p><code>Deck</code> : Each <code>Deck</code> also has a <code>Statistics</code> instance. This is to help identify which `Deck`s are used more often, are more difficult, etc.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each time the user does something that can be tracked, it updates both the universal <code>Statistics</code> and the <code>Statistics</code> of the <code>Deck</code> that he or she is using. The call to update both statistics is done simultaneously in the <code>CardiBuddy</code> model for adding/removing decks/cards, or in <code>ModelManager</code> for finishing a <code>TestSession</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">4.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.5, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1016,7 +1074,7 @@ to help in pinpointing the input errors.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.5. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1992,4 +2050,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:10:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:40:37 UTC</div></div></div></body></html>
