@@ -569,19 +569,44 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-implement-the-different-card-and-answer-types"><a class="link" href="#aspect-how-to-implement-the-different-card-and-answer-types">Aspect: How to implement the different card and answer types</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p>Due to the similarities in characteristics of the different answers and cards classes, a <code>Card</code> and <code>Answer</code> abstract class was created.<br></p>
+<p><strong>Alternative 1 (current choice):</strong> Using an abstract class to contain general functionalities.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Can define method bodies general methods. Easier to make changes such as creating new methods which can be defined directly in the abstract class.</p>
 </li>
 <li>
-<p>More specific exceptions were thrown such as <code>WrongMcqAnswerException</code> and <code>WrongTfAnswerException</code> due to the large number of classes involved in the creation of a <code>Card</code>
-to help in pinpointing the input errors.</p>
+<p>Cons: Child <code>Card</code> and <code>Answer</code> classes cannot extend multiple abstract classes.</p>
 </li>
 </ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Using an interface to contain general functionalities.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Supports multiple inheritances.</p>
+</li>
+<li>
+<p>Cons: Cannot define method bodies in the interface.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Due to the similarities in method bodies of the different answers and cards classes, a <code>Card</code> and <code>Answer</code> abstract class was used instead of an interface.<br></p>
 </div>
 <hr>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:40:37 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:41:18 UTC</div></div></div></body></html>
