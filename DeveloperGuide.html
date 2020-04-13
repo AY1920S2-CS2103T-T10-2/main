@@ -27,11 +27,10 @@
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">4.1. Undo/Redo feature</a></li>
-<li><a href="#adding-of-cards">4.2. Adding of Cards</a></li>
-<li><a href="#search-and-filter-feature">4.3. Search and Filter feature</a></li>
-<li><a href="#test-feature">4.4. Test feature</a></li>
-<li><a href="#logging">4.5. Logging</a></li>
-<li><a href="#Implementation-Configuration">4.6. Configuration</a></li>
+<li><a href="#flashcards">4.2. Flashcards</a></li>
+<li><a href="#test-feature">4.3. Test feature</a></li>
+<li><a href="#logging">4.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">4.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a></li>
@@ -355,20 +354,6 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>CardiBuddy</code>, which <code>Deck</code> can reference. This would allow <code>CardiBuddy</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Deck</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
-<br>
-<span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
 <h3 id="Design-Storage"><a class="link" href="#Design-Storage">3.2. Storage component</a></h3>
@@ -624,65 +609,188 @@ If the <code>currentStatePointer</code> is at index <code>cardiBuddyStateList.si
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-of-cards"><a class="link" href="#adding-of-cards">4.2. Adding of Cards</a></h3>
+<h3 id="flashcards"><a class="link" href="#flashcards">4.2. Flashcards</a></h3>
 <div class="sect3">
 <h4 id="design-3"><a class="link" href="#design-3">4.2.1. Design</a></h4>
 <div class="paragraph">
 <p>Users are able to add two different types of cards&#8201;&#8212;&#8201;cards with images and cards without. These cards have three types of answers&#8201;&#8212;&#8201;True/False, MCQ and short answers.</p>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="search-and-filter-feature"><a class="link" href="#search-and-filter-feature">4.3. Search and Filter feature</a></h3>
-<div class="sect3">
-<h4 id="design-4"><a class="link" href="#design-4">4.3.1. Design</a></h4>
+<div class="sect4">
+<h5 id="model-component"><a class="link" href="#model-component">Model Component</a></h5>
 <div class="paragraph">
-<p>Users can choose to find a <code>Deck</code> or a <code>Flashcard</code> through:</p>
+<p>The following classes can be found inside <em>cardibuddy/model/flashcard</em>.</p>
+</div>
+<div class="paragraph">
+<p>The add feature revolves around 2 abstract classes: <code>Card</code> and <code>Answer</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Card</code> class is extended by two card classes: <code>Flashcard</code> and <code>Imagecard</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>Answer</code> class is extended by three answer classes: <code>TfAnswer</code>, <code>McqAnswer</code> and <code>ShortAnswer</code>.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="logic-component"><a class="link" href="#logic-component">Logic Component</a></h5>
+<div class="paragraph">
+<p>To add a card, a deck must first be opened. This can be checked from accessing the <code>LogicToUiManager</code> which stores the currently opened deck.
+Subsequently, The <code>Parser</code> classes will separate the relevant arguments from the user input and execute commands from the <code>Command</code> classes.
+These <code>Parser</code> and Command` classes are part of the <strong>Logic</strong> component of CardiBuddy, and can be found within the <em>cardibuddy/logic</em> package.</p>
+</div>
+<div class="paragraph">
+<p>These commands allow the user to add the different types of flashcards and answers into a deck:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>searching by keywords from the title of a <code>Deck</code> or from the <code>Question</code> from a <code>Flashcard</code>.</p>
+<p>The user will first open a deck.</p>
 </li>
 <li>
-<p>filtering by tags from the <code>Tag(s)</code> associated with a <code>Deck</code></p>
+<p><em>Adding a Flashcard:</em> The user will enter <code>add</code> followed by <code>q/</code> with their question and <code>a/</code> with their answer.</p>
+</li>
+<li>
+<p><em>Adding an Imagecard:</em> The user will enter <code>add</code> followed by <code>p/</code> with the filepath to the image, <code>q/</code> with their
+question and <code>a/</code> with their answer.</p>
+</li>
+<li>
+<p><em>Adding a TfAnswer</em>: The user will enter either <code>T</code> or <code>F</code> for their answer after the <code>a/</code> prefix.
+Only capital, single-lettered answers are accepted and a <code>WrongTfException</code> will be thrown if the user enters <code>t</code>, <code>f</code>, <code>True</code> or <code>False</code>.</p>
+</li>
+<li>
+<p><em>Adding an MCQAnswer</em>: The user will enter <code>A)CHOICE_A B)CHOICE_B C)CHOICE_C</code>, with the correct choice positioned first, for their answer after the <code>a/</code> prefix.
+In other words, if <code>C)CHOICE_C B)CHOICE_B A)CHOICE_A</code> is entered by the user, <code>C</code> will be taken as the correct answer.
+A <code>WrongMcqAnswerException</code> will be thrown if the user input does not have all three options in capital letters with parentheses.</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Both <code>search</code> and <code>filter</code> have the and-or functionality where adding <code>&amp;</code> between keywords returns decks and flashcards
-with both terms before and after the <code>&amp;</code> symbol.
-For example, <code>filter Y1 &amp; Hard</code> will return decks and flashcards that are tagged with both <code>Y1</code> and <code>hard</code>.</p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="types-of-cards"><a class="link" href="#types-of-cards">4.2.2. Types of Cards</a></h4>
+<div class="sect4">
+<h5 id="flashcard"><a class="link" href="#flashcard">Flashcard</a></h5>
 <div class="paragraph">
-<p>The following sequence diagram shows how the <code>Search</code> command works:</p>
+<p>To add a <code>Flashcard</code> in an opened deck, the user will enter <code>add q/QUESTION a/ANSWER</code>.
+A sample command would be <code>add q/Is defensive code desirable at all times? a/F</code>.<br>
+<br>
+The following sequence diagram shows how a <code>Flashcard</code> is created from the above command and displayed immediately in the flashcard panel to the user:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/SearchFilterDiagram.png" alt="SearchFilterDiagram">
+<img src="images/AddFlashcardDiagram.png" alt="AddFlashcardDiagram">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="imagecard"><a class="link" href="#imagecard">Imagecard</a></h5>
+<div class="paragraph">
+<p>To add an <code>Imagecard</code> in an opened deck, the user will enter <code>add p/file:IMAGE_FILEPATH q/QUESTION a/ANSWER</code>.
+A sample command would be <code>add p/file:/Users/Jing/ArchitectureDiagram.png q/What kind of diagram is this?
+a/B)Architecture C)Sequence A)Object</code>.<br>
+<br>
+When an <code>ImagecardCard</code> is displayed in the <code>FlashcardPanel</code>, the image will be
+ retrieved via the stored <code>IMAGE_FILEPATH</code> from the user&#8217;s computer.
+If the file path is invalid, the middle part of the card will be blank and an image will not be shown.
+ More information regarding the implementation of the <code>Ui</code> can be found inside <em>cardibuddy/ui/ImagecardCard</em>.<br>
+<br>
+The following sequence diagram shows how an <code>Imagecard</code> is created from the above command and displayed immediately in the flashcard panel to the user:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddImagecardDiagram.png" alt="AddImagecardDiagram">
 </div>
 </div>
 <div class="paragraph">
-<p>Figure X. Component interactions for a Search command</p>
+<p>It is largely similar to the sequence diagram for the creation of a <code>Flashcard</code> but with an extra <code>IMAGE_FILEPATH</code> argument.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="types-of-answers"><a class="link" href="#types-of-answers">4.2.3. Types of Answers</a></h4>
+<div class="paragraph">
+<p>When adding cards, the <code>ParserUtil</code> will parse the different answer inputs to create one of the three different types of answers.</p>
 </div>
 <div class="paragraph">
-<p>Calling the <code>search</code> command creates a predicate based on the given keywords and passed as an argument to a <code>SearchCommand</code> object.
-The <code>execute()</code> method is then called to filter the decks accordingly to the predicate and it returns a <code>CommandResult</code> object.</p>
+<p>The following activity diagram shows how the <code>ParserUtil</code> chooses which type of answer object to create:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AnswerActivityDiagram.png" alt="AnswerActivityDiagram">
+</div>
+</div>
+<div class="sect4">
+<h5 id="tfanswer"><a class="link" href="#tfanswer">TfAnswer</a></h5>
+<div class="paragraph">
+<p>For a <code>TfAnswer</code> to be associated with a <code>Card</code>, the user will have to enter either <code>T</code> or <code>F</code> after the answer prefix <code>a/</code>.
+A sample command was mentioned in the example for <code>Flashcard</code> above: <code>add q/Is defensive code desirable at all times? a/F</code>.</p>
 </div>
 <div class="paragraph">
-<p>Future implementations would return flashcards and decks that are filtered accordingly to the predicate. (by v1.3)</p>
+<p>The following sequence diagram shows how the <code>ParserUtil</code> class creates a <code>TfAnswer</code> answer based on the given sample command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ParserUtilTfDiagram.png" alt="ParserUtilTfDiagram">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="mcqanswer"><a class="link" href="#mcqanswer">McqAnswer</a></h5>
+<div class="paragraph">
+<p>For an <code>McqAnswer</code> to be associated with a <code>Card</code>, the user will have to enter
+<code>A)CHOICE_A B)CHOICE_B C)CHOICE_C</code>, with the correct choice positioned first, for their answer after the answer prefix <code>a/</code>.
+A sample command was mentioned in the example for <code>Imagecard</code> above: <code>add p/file:/Users/Jing/ArchitectureDiagram.png q/What kind of diagram is this?
+a/B)Architecture C)Sequence A)Object</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>ParserUtil</code> class creates an <code>McqAnswer</code> answer based on the given sample command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ParserUtilMcqDiagram.png" alt="ParserUtilMcqDiagram">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="shortanswer"><a class="link" href="#shortanswer">ShortAnswer</a></h5>
+<div class="paragraph">
+<p>For a <code>ShortAnswer</code> to be associated with a <code>Card</code>, the user will have to enter an answer that does not fulfil the
+requirements of both <code>TfAnswer</code> and <code>McqAnswer</code> after the answer prefix <code>a/</code>.
+A sample command would be <code>add q/How does one go about solving recursion problems? a/Wishful thinking</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>ParserUtil</code> class creates a <code>ShortAnswer</code> answer based on the given sample command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ParserUtilShortAnsDiagram.png" alt="ParserUtilShortAnsDiagram">
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.4. Design Considerations</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Due to the similarities in characteristics of the different answers and cards classes, a <code>Card</code> and <code>Answer</code> abstract class was created.<br></p>
+</li>
+<li>
+<p>More specific exceptions were thrown such as <code>WrongMcqAnswerException</code> and <code>WrongTfAnswerException</code> due to the large number of classes involved in the creation of a <code>Card</code>
+to help in pinpointing the input errors.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="test-feature"><a class="link" href="#test-feature">4.4. Test feature</a></h3>
+<h3 id="test-feature"><a class="link" href="#test-feature">4.3. Test feature</a></h3>
 <div class="sect3">
-<h4 id="design-5"><a class="link" href="#design-5">4.4.1. Design</a></h4>
+<h4 id="design-4"><a class="link" href="#design-4">4.3.1. Design</a></h4>
 <div class="paragraph">
 <p>A flashcard application is not complete without the ability to test oneself.</p>
 </div>
 <div class="sect4">
-<h5 id="model-component"><a class="link" href="#model-component">Model Component</a></h5>
+<h5 id="model-component-2"><a class="link" href="#model-component-2">Model Component</a></h5>
 <div class="paragraph">
 <p>The following classes can be found inside <em>cardibuddy/model/testsession</em>.</p>
 </div>
@@ -706,7 +814,7 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 </div>
 </div>
 <div class="sect4">
-<h5 id="logic-component"><a class="link" href="#logic-component">Logic Component</a></h5>
+<h5 id="logic-component-2"><a class="link" href="#logic-component-2">Logic Component</a></h5>
 <div class="paragraph">
 <p>The test feature makes use of a suite of <code>Command</code> classes exclusive to a <code>TestSession</code>. These <code>Command</code> classes are part of the <strong>Logic</strong> component of CardiBuddy, and can be found within the <em>cardibuddy/logic/testsession</em> package.</p>
 </div>
@@ -804,7 +912,7 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 </div>
 </div>
 <div class="sect3">
-<h4 id="using-the-test-feature"><a class="link" href="#using-the-test-feature">4.4.2. Using the test feature</a></h4>
+<h4 id="using-the-test-feature"><a class="link" href="#using-the-test-feature">4.3.2. Using the test feature</a></h4>
 <div class="sect4">
 <h5 id="starting-a-test-session"><a class="link" href="#starting-a-test-session">Starting a Test Session</a></h5>
 <div class="paragraph">
@@ -870,14 +978,14 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.6, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 4.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -908,7 +1016,7 @@ The <code>execute()</code> method is then called to filter the decks accordingly
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.6. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">4.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1884,4 +1992,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 12:01:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:10:39 UTC</div></div></div></body></html>

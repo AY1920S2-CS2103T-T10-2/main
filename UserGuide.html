@@ -42,7 +42,7 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Cardi Buddy (CardiB) is for students who <strong>prefer to use a desktop app to store their revision materials as flashcards</strong>. More importantly, CardiB is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, CardiB can help you to store revision materials quickly. The self-testing features will definitely help you to ace your examinations as opposed to traditional ways of revision by re-reading lecture notes. Interested? Jump to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>CardiBuddy (CardiB) is for students who <strong>prefer to use a desktop app to store their revision materials as flashcards</strong>. More importantly, CardiB is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, CardiB can help you to store revision materials quickly. The self-testing features will definitely help you to ace your examinations as opposed to traditional ways of revision by re-reading lecture notes. Interested? Jump to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
 </div>
 </div>
 </div>
@@ -58,7 +58,7 @@
 <p>Download the latest <code>cardibuddy.jar</code> <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Cardi Buddy.</p>
+<p>Copy the file to the folder you want to use as the home folder for your CardiBuddy.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
@@ -80,7 +80,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all decks</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>d/CS1101S t/Basics</code> : adds an empty deck titled <code>CS1101S</code> to the Cardi Buddy.</p>
+<p><strong><code>add</code></strong><code>d/CS1101S t/Basics</code> : adds an empty deck titled <code>CS1101S</code> to the CardiBuddy.</p>
 </li>
 <li>
 <p><strong><code>open 1</code></strong> : opens the 1st deck shown in the current list</p>
@@ -263,7 +263,7 @@ Format: <code>add q/QUESTION a/ANSWER</code></p>
 <td class="content">
 These are the three types of <code>ANSWER</code> and their corresponding formats:<br>
 1. T/F&#8201;&#8212;&#8201;<code>T</code> or <code>F</code><br>
-2. MCQ&#8201;&#8212;&#8201;<code>A)CHOICE_ONE B)CHOICE_TWO C)CHOICE_THREE</code> with the correct option being entered first, the order of the next two does not matter <br>
+2. MCQ&#8201;&#8212;&#8201;<code>A)CHOICE_A B)CHOICE_B C)CHOICE_C</code> with the correct option being entered first, the order of the next two does not matter <br>
 3. Short Answer&#8201;&#8212;&#8201;<code>ANY_TEXT</code>
 </td>
 </tr>
@@ -272,7 +272,7 @@ These are the three types of <code>ANSWER</code> and their corresponding formats
 <div class="ulist">
 <ul>
 <li>
-<p>The deck to be added in must be open for you to add a card.</p>
+<p>The deck to be added in must be opened for you to add a card.</p>
 </li>
 </ul>
 </div>
@@ -303,7 +303,7 @@ Format: <code>add p/file:FILE_PATH_TO_IMAGE q/QUESTION a/ANSWER</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>The deck to be added in must be open for you to add a card.</p>
+<p>The deck to be added in must be opened for you to add a card.</p>
 </li>
 <li>
 <p>The images can only be PNG or JPG files.</p>
@@ -342,7 +342,31 @@ You can drag and drop the image you want to add into a terminal window to obtain
 <div class="sect3">
 <h4 id="adding-an-image-card-via-the-image-button-code-q-question-a-answer-code"><a class="link" href="#adding-an-image-card-via-the-image-button-code-q-question-a-answer-code">3.3.4. Adding an image card via the Image button: <code>q/QUESTION a/ANSWER</code></a></h4>
 <div class="paragraph">
-<p>Shortcut for users who do not want to search for the file path.</p>
+<p>This is a shortcut for users who do not want to search for the file path.
+Format: <code>q/QUESTION a/ANSWER</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The deck to be added in must be opened, before you click on the button, for you to add a card.</p>
+</li>
+<li>
+<p>Do note the differences in the command to be entered. There is no <code>add</code> or <code>p/IMAGE_FILEPATH</code> inputs that are required.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>open 1</code><br>
+<em>click on button and choose image</em><br>
+<code>q/What type of diagram is this? a/B)Architecture Diagram A)Sequence Diagram C)Object Diagram</code><br>
+Adds a new card with an image and <code>MCQ</code> answer type belonging to the opened deck indexed at 1.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><br></p>
@@ -355,7 +379,7 @@ You can drag and drop the image you want to add into a terminal window to obtain
 <h4 id="editing-a-deck-code-edit-code"><a class="link" href="#editing-a-deck-code-edit-code">3.4.1. Editing a deck: <code>edit</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing deck in the library.
-Format: <code>edit DECK_INDEX [d/TITLE] [t/TAG]…</code></p>
+Format: <code>edit deck DECK_INDEX [d/TITLE] [t/TAG]…</code></p>
 </div>
 <div class="ulist">
 <ul>
@@ -383,18 +407,18 @@ removed.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 d/CS2103T</code><br>
+<p><code>edit deck 1 d/CS2103T</code><br>
 Edits the title of the 1st deck to be <code>CS2103T</code> without removing existing tags.</p>
 </li>
 <li>
-<p><code>edit 2 d/CS2040 t/</code><br>
+<p><code>edit deck 2 d/CS2040 t/</code><br>
 Edits the title of the 2nd deck to be <code>CS2040</code> and clears all existing tags.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-a-card-code-edit-card-code-coming-in-v2-0"><a class="link" href="#editing-a-card-code-edit-card-code-coming-in-v2-0">3.4.2. Editing a card: <code>edit card</code> [coming in v2.0]</a></h4>
+<h4 id="editing-a-card-code-edit-card-code"><a class="link" href="#editing-a-card-code-edit-card-code">3.4.2. Editing a card: <code>edit card</code></a></h4>
 <div class="paragraph">
 <p>Edits an existing card in the deck.
 Format: <code>edit card CARD_INDEX [q/QUESTION] [a/ANSWER] [t/TAG]…</code></p>
@@ -1006,7 +1030,7 @@ Shows the statistics of the 3rd test session of the deck with the shown index of
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Cardi Buddy folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous CardiBuddy folder.</p>
 </div>
 </div>
 </div>
@@ -1091,4 +1115,4 @@ e.g. <code>test 1</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 12:01:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 13:10:39 UTC</div></div></div></body></html>
