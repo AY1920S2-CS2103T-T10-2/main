@@ -39,9 +39,6 @@ The implementation too was challenging as it required changes to existing comman
 creation of a new type of object (Imagecard object). In addition, changes were made to the UI in the FlashcardListPanel
 to display images in the flashcard.</p>
 </li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
-</li>
 </ul>
 </div>
 </li>
@@ -49,8 +46,11 @@ to display images in the flashcard.</p>
 <p><strong>Minor enhancement</strong>: added a filter command that allows the user to filter decks via tags.</p>
 </li>
 <li>
+<p><strong>Minor enhancement</strong>: created three different answer types to questions in flashcards (T/F, MCQ and Short Answer) to make testing easier.</p>
+</li>
+<li>
 <p><strong>Minor enhancement</strong>: added an insert image button that shows a popup window for the user to choose the .png and .jpg
-files they want to insert into their flashcards.</p>
+files they want to insert into their flashcards so that they do not have to key in their filepath.</p>
 </li>
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=t10&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=haveaqiupill&amp;tabRepo=AY1920S2-CS2103T-T10-2%2Fmain%5Bmaster%5D">Functional code</a>]</p>
@@ -77,14 +77,19 @@ files they want to insert into their flashcards.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Re-designed UI (Pull requests <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/pull/114">#114</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/pull/199">#199</a>)</p>
+<p>Re-designed UI (Pull requests <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/pull/114">#114</a>,
+<a href="https://github.com/AY1920S2-CS2103T-T10-2/main/pull/199">#199</a>)</p>
 </li>
 <li>
 <p>Improved on existing find command (renamed to search command) that allows the user to search for
 decks and cards that contains all of the keywords instead of any of the keywords.</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 13% to 27% (Pull requests <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/pull/200">#200</a>, <a href="https://github.com">#38</a>)</p>
+<p>Refactored commands from AB3 such as AddCommand to AddDeckCommand, AddFlashcardCommand and AddImageCardCommand as well as the DeleteCommand to DeleteCardCommand and DeleteDeckCommand.</p>
+</li>
+<li>
+<p>Wrote additional tests for the classes in Deck, Tag and Flashcard folders to increase coverage from 13% to 27%
+(Pull requests <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/pull/200">#200</a>)</p>
 </li>
 </ul>
 </div>
@@ -94,7 +99,7 @@ decks and cards that contains all of the keywords instead of any of the keywords
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/pull/211">#211</a></p>
 </li>
 <li>
 <p>Wrote the whole README and designed the Ui mock-up: <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/pull/54">#54</a>, <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/pull/57">#57</a></p>
@@ -107,10 +112,10 @@ decks and cards that contains all of the keywords instead of any of the keywords
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY1920S2-CS2103T-T10-2/main/pull/119">#119</a></p>
 </li>
 <li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/41">1</a>, <a href="https://github.com/nus-cs2103-AY1920S2/addressbook-level3/pull/5">2</a>)</p>
 </li>
 </ul>
 </div>
@@ -122,9 +127,6 @@ decks and cards that contains all of the keywords instead of any of the keywords
 <li>
 <p>Integrated automated hosting platform (Netlify) to the project (<a href="https://github.com/AY1920S2-CS2103T-T10-2/main/pull/60">#60</a>)</p>
 </li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
-</li>
 </ul>
 </div>
 </li>
@@ -132,9 +134,6 @@ decks and cards that contains all of the keywords instead of any of the keywords
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -152,15 +151,61 @@ decks and cards that contains all of the keywords instead of any of the keywords
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="adding-an-image-card-code-add-p-file-file_path_to_image-c-deck_index-q-question-a-answer-code"><a class="link" href="#adding-an-image-card-code-add-p-file-file_path_to_image-c-deck_index-q-question-a-answer-code">Adding an image card: <code>add p/file:FILE_PATH_TO_IMAGE c/DECK_INDEX q/QUESTION a/ANSWER</code></a></h4>
+<h4 id="adding-a-normal-card-code-add-q-question-a-answer-code"><a class="link" href="#adding-a-normal-card-code-add-q-question-a-answer-code">Adding a normal card: <code>add q/QUESTION a/ANSWER</code></a></h4>
 <div class="paragraph">
-<p>Creates a new image card to be added to the deck.
-Format: <code>add p/file:FILE_PATH_TO_IMAGE c/DECK_INDEX q/QUESTION a/ANSWER</code></p>
+<p>Creates a new card to be added to the deck.
+Format: <code>add q/QUESTION a/ANSWER</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+These are the three types of <code>ANSWER</code> and their corresponding formats:<br>
+1. T/F&#8201;&#8212;&#8201;<code>T</code> or <code>F</code><br>
+2. MCQ&#8201;&#8212;&#8201;<code>A)CHOICE_ONE B)CHOICE_TWO C)CHOICE_THREE</code> with the correct option being entered first, the order of the next two does not matter <br>
+3. Short Answer&#8201;&#8212;&#8201;<code>ANY_TEXT</code>
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The deck specified in DECK_INDEX must be open for you to add a card.</p>
+<p>The deck to be added in must be open for you to add a card.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>open 2</code><br>
+<code>add q/How does one go about solving recursion problems? a/Wishful thinking</code><br>
+Adds a new card with a <code>Short Answer</code> type belonging to the opened deck indexed at 2.</p>
+</li>
+<li>
+<p><code>open 1</code><br>
+<code>add q/Is defensive code desirable at all times? a/F</code><br>
+Adds a new card with a <code>T/F</code> answer type belonging to the opened deck indexed at 1.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="adding-an-image-card-code-add-p-file-file_path_to_image-q-question-a-answer-code"><a class="link" href="#adding-an-image-card-code-add-p-file-file_path_to_image-q-question-a-answer-code">Adding an image card: <code>add p/file:FILE_PATH_TO_IMAGE q/QUESTION a/ANSWER</code></a></h4>
+<div class="paragraph">
+<p>Creates a new image card to be added to the deck.
+Format: <code>add p/file:FILE_PATH_TO_IMAGE q/QUESTION a/ANSWER</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The deck to be added in must be open for you to add a card.</p>
 </li>
 <li>
 <p>The images can only be PNG or JPG files.</p>
@@ -177,15 +222,11 @@ Format: <code>add p/file:FILE_PATH_TO_IMAGE c/DECK_INDEX q/QUESTION a/ANSWER</co
 <ul>
 <li>
 <p><code>open 1</code><br>
-<code>add p/file:/Users/qiujingying/Documents/GitHub/cs2103/main/docs/images/ArchitectureDiagram.png c/1 q/What type of diagram is this? a/Architecture Diagram</code><br>
-Adds a new card with an image belonging to the deck indexed at 1.</p>
+<code>add p/file:/Users/qiujingying/Documents/GitHub/cs2103/main/docs/images/ArchitectureDiagram.png q/What type of diagram is this? a/B)Architecture Diagram A)Sequence Diagram C)Object Diagram</code><br>
+Adds a new card with an image and <code>MCQ</code> answer type belonging to the opened deck indexed at 1.
+Note that the correct answer is <code>B</code> as it is the first choice entered.</p>
 </li>
 </ul>
-</div>
-<div class="imageblock" style="text-align: center">
-<div class="content">
-<img src="../images/AddImageCard.png" alt="AddImageCard" width="800">
-</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -201,9 +242,12 @@ You can drag and drop the image you want to add into a terminal window to obtain
 </div>
 </div>
 <div class="sect3">
-<h4 id="adding-an-image-card-via-the-image-button-code-c-deck_index-q-question-a-answer-code"><a class="link" href="#adding-an-image-card-via-the-image-button-code-c-deck_index-q-question-a-answer-code">Adding an image card via the Image button: <code>c/DECK_INDEX q/QUESTION a/ANSWER</code></a></h4>
+<h4 id="adding-an-image-card-via-the-image-button-code-q-question-a-answer-code"><a class="link" href="#adding-an-image-card-via-the-image-button-code-q-question-a-answer-code">Adding an image card via the Image button: <code>q/QUESTION a/ANSWER</code></a></h4>
 <div class="paragraph">
 <p>Shortcut for users who do not want to search for the file path.</p>
+</div>
+<div class="paragraph">
+<p><br></p>
 </div>
 </div>
 <div class="sect2">
@@ -325,8 +369,7 @@ Displays decks with the tag <code>hard</code>.</p>
 </li>
 <li>
 <p><code>filter hard &amp; coremodule</code><br>
-Displays decks with both the tags <code>hard</code> and <code>coremodule</code>.
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+Displays decks with both the tags <code>hard</code> and <code>coremodule</code>.</p>
 </li>
 </ul>
 </div>
@@ -348,227 +391,56 @@ Displays decks with both the tags <code>hard</code> and <code>coremodule</code>.
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">[Proposed] Undo/Redo feature</a></h3>
+<h3 id="adding-of-cards"><a class="link" href="#adding-of-cards">Adding of Cards</a></h3>
 <div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">Proposed Implementation</a></h4>
+<h4 id="design"><a class="link" href="#design">Design</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedCardiBuddy</code>.
-It extends <code>CardiBuddy</code> with an undo/redo history, stored internally as an <code>cardiBuddyStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedCardiBuddy#commit()</code>&#8201;&#8212;&#8201;Saves the current CardiBuddy state in its history.</p>
-</li>
-<li>
-<p><code>VersionedCardiBuddy#undo()</code>&#8201;&#8212;&#8201;Restores the previous CardiBuddy state from its history.</p>
-</li>
-<li>
-<p><code>VersionedCardiBuddy#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone CardiBuddy state from its history.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCardiBuddy()</code>, <code>Model#undoCardiBuddy()</code> and <code>Model#redoCardiBuddy()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedCardiBuddy</code> will be initialized with the initial CardiBuddy state, and the <code>currentStatePointer</code> pointing to that single CardiBuddy state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState0.png" alt="UndoRedoState0">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th deck in the address book. The <code>delete</code> command calls <code>Model#commitCardiBuddy()</code>, causing the modified state of CardiBuddy, after the <code>delete 5</code> command executes, to be saved in the <code>cardiBuddyStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted CardiBuddy state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState1.png" alt="UndoRedoState1">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add d/cs2103T &#8230;&#8203;</code> to add a new deck. The <code>add</code> command also calls <code>Model#commitCardiBuddy()</code>, causing another modified CardiBuddy state to be saved into the <code>cardiBuddyStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState2.png" alt="UndoRedoState2">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitCardiBuddy()</code>, so the CardiBuddy state will not be saved into the <code>cardiBuddyStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the deck was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoCardiBuddy()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous CardiBuddy state, and restores the CardiBuddy to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState3.png" alt="UndoRedoState3">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous CardiBuddy states to restore. The <code>undo</code> command uses <code>Model#canUndoCardiBuddy()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCardiBuddy()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the CardiBuddy to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>cardiBuddyStateList.size() - 1</code>, pointing to the latest CardiBuddy state, then there are no undone CardiBuddy states to restore. The <code>redo</code> command uses <code>Model#canRedoCardiBuddy()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the CardiBuddy, such as <code>list</code>, will usually not call <code>Model#commitCardiBuddy()</code>, <code>Model#undoCardiBuddy()</code> or <code>Model#redoCardiBuddy()</code>. Thus, the <code>cardiBuddyStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCardiBuddy()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>CardiBuddyStateList</code>, all CardiBuddy states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add d/cs2103T &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
+<p>Users are able to add two different types of cards&#8201;&#8212;&#8201;cards with images and cards without. These cards have three types of answers&#8201;&#8212;&#8201;True/False, MCQ and short answers.</p>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="search-and-filter-feature"><a class="link" href="#search-and-filter-feature">Search and Filter feature</a></h3>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h4 id="design-2"><a class="link" href="#design-2">Design</a></h4>
+<div class="paragraph">
+<p>Users can choose to find a <code>Deck</code> or a <code>Flashcard</code> through:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire CardiBuddy.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
+<p>searching by keywords from the title of a <code>Deck</code> or from the <code>Question</code> from a <code>Flashcard</code>.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>filtering by tags from the <code>Tag(s)</code> associated with a <code>Deck</code></p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the deck being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command is correct.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Both <code>search</code> and <code>filter</code> have the and-or functionality where adding <code>&amp;</code> between keywords returns decks and flashcards
+with both terms before and after the <code>&amp;</code> symbol.
+For example, <code>filter Y1 &amp; Hard</code> will return decks and flashcards that are tagged with both <code>Y1</code> and <code>hard</code>.</p>
 </div>
-</li>
-</ul>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>Search</code> command works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SearchFilterDiagram.png" alt="SearchFilterDiagram">
 </div>
 </div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of CardiBuddy states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedCardiBuddy</code>.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Figure X. Component interactions for a Search command</p>
 </div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Calling the <code>search</code> command creates a predicate based on the given keywords and passed as an argument to a <code>SearchCommand</code> object.
+The <code>execute()</code> method is then called to filter the decks accordingly to the predicate and it returns a <code>CommandResult</code> object.</p>
 </div>
-</li>
-</ul>
+<div class="paragraph">
+<p>Future implementations would return flashcards and decks that are filtered accordingly to the predicate. (by v1.3)</p>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
 <hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-12 16:24:05 UTC</div></div></div></body></html>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 12:01:36 UTC</div></div></div></body></html>
