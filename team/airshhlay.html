@@ -10,7 +10,7 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>CardiBuddy is a desktop flashcard application made with NUS Computing students in mind, and is a useful study aid. The user interacts with it using a CLI, and it has a GUI created with JavaFX. CardiBuddy is written in Java, and has about 10 kLoC.</p>
 </div>
 </div>
 </div>
@@ -20,11 +20,11 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to start a test session with a selected deck of flashcards.k</strong></p>
+<p><strong>Major enhancement</strong>: Test Feature (<em>the ability to start a test session on selected flashcards</em>)</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to test themselves on their subject content by:</p>
+<p>This feature allows the user to test themselves on their subject content by:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -34,16 +34,16 @@
 <p>2. Adding flashcards back into the test session if they got it wrong <strong>(retesting)</strong></p>
 </li>
 <li>
-<p>3. Checking the user&#8217;s answer with the flashcard&#8217;s stored answer, and showing them the outcome (Right or Wrong).</p>
+<p>3. Marking the user&#8217;s answer, and showing them their result (Right or Wrong).</p>
 </li>
 <li>
-<p>4. Storing the test results (Number of tries, correct/wrong) to generate statistics for the user to view at the end of each test.</p>
+<p>4. Storing the test results for each flashcard (number of tries for this flashcard, whether this flashcard was answered correctly / wrongly / was skipped) to generate statistics for the user to view at the end of each test.</p>
 </li>
 <li>
-<p>5. Giving users the ability to force correct answers if their answers differ from the flashcard&#8217;s stored answer.</p>
+<p>5. Giving users the ability to force their initially marked wrong answers to be marked as correct, even if those answers differ from the flashcard&#8217;s stored answer. <strong>(force correct)</strong></p>
 </li>
 <li>
-<p>6. Giving users the ability to skip questions when needed.</p>
+<p>6. Giving users the ability to skip questions when needed. <strong>(skipping)</strong></p>
 </li>
 <li>
 <p>7. Giving users the ability to quit the ongoing test session halfway.</p>
@@ -52,53 +52,65 @@
 </div>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly as a flashcard application can not be without a testing feature. In addition, this feature provides certain enhancements on top of basic testing - such as prioritisation, skipping and the ability to force correct answers. This provides greater flexibility in how the user chooses to answer questions, and allows for paraphrasing of answers which improves information retention.</p>
+<p>Justification:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This feature improves the product significantly - a flashcard application can not be without a testing feature. In addition, this feature provides enhancements on top of basic testing - such as <code>retesting</code>, <code>skipping</code> and the ability to <code>force</code> correct answers.</p>
 </li>
 <li>
-<p>Highlights: This enhancement is a major overhaul to the application, and required an in-depth analysis of design alternatives. The implementation was challenging as it required deep analysis of the application in order to figure out how to replace the existing JavaFX scene with the test session. In addition, the test session required tight integration with other aspects of the application such as Flashcards and Decks, and constant communication and clarification with the team was required.</p>
+<p><code>Retesting</code> forces the student to revisit the questions they answered wrongly again, and the question will stop being retested only if the user finally manages to answer it correctly. This drilling and increased exposure to questions the user is unsure of will help him or her get more familiar with the concept being tested.</p>
+</li>
+<li>
+<p><code>Skipping</code> and <code>force</code> correcting provides great flexibility in how the user chooses to answer questions, and allows for paraphrasing of answers to boost information retention.</p>
+</li>
+<li>
+<p><code>Quitting</code> the test session halfway hands the power over to the user to decide when to stop the test session. This lets the user have greater control over their revision, and saves them the time needed to complete the test session in its entirety, if they have decided that they are sufficiently prepared.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This enhancement is a major overhaul to the application, and required an in-depth analysis of design alternatives.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=t10&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=airshhlay&amp;tabRepo=AY1920S2-CS2103T-T10-2%2Fmain%5Bmaster%5D">Functional code</a>] [<a href="https://github.com">Test code</a>]</p>
+<p>All of the classes used for the test feature were not provided by the stock AddressBook3 application, but had to be created from scratch.</p>
+</li>
+<li>
+<p>The implementation was challenging as it required deep analysis of the application in order to figure out how to replace the existing JavaFX scene with the test session.</p>
+</li>
+<li>
+<p>In addition, the test session required tight integration with other aspects of the application such as Flashcards and Decks, and constant communication and clarification with the team was required.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Created Java and FXML files for flashcards and decks as part of the Ui component.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s2.github.io/tp-dashboard/#search=t10&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-02-14&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=airshhlay&amp;tabRepo=AY1920S2-CS2103T-T10-2%2Fmain%5Bmaster%5D">Functional code and Test code Written</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
 <p>Documentation:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Enhanced the developer&#8217;s guide, and wrote many of the common sections in the developer&#8217;s guide.</p>
+</li>
+<li>
+<p>Modified existing class diagrams in the developer&#8217;s guide to adapt to our enhancements on the existing code base.</p>
 </li>
 </ul>
 </div>
@@ -108,29 +120,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/airshhlay/ped/issues">here</a>)</p>
 </li>
 </ul>
 </div>
@@ -139,9 +129,6 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -158,6 +145,196 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="testing"><a class="link" href="#testing">Testing</a></h3>
+<div class="sect3">
+<h4 id="overview-2"><a class="link" href="#overview-2">Overview</a></h4>
+<div class="paragraph">
+<p>Of course, you did not create all those decks and flashcards just so you can admire them! It&#8217;s time to get your revision on. Start a <code>test session</code> for a deck to begin testing yourself!</p>
+</div>
+<div class="paragraph">
+<p>A <code>test session</code> works just like how flashcard testing works in real life - You look at the question, think of the answer, and 'flip' the card around to see if your answer matches the one on the flashcard.</p>
+</div>
+<div class="paragraph">
+<p>The difference here is that you do not need to manually keep track of how many flashcards you got right and wrong&#8201;&#8212;&#8201;CardiBuddy does all that for you!</p>
+</div>
+<div class="paragraph">
+<p>In addition, you will also get to see a summary of how you&#8217;ve done at the end of your <code>test session</code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="retesting"><a class="link" href="#retesting">Retesting</a></h4>
+<div class="paragraph">
+<p>A <code>test session</code> in CardiBuddy is special - it includes a <strong>retesting</strong> feature to make sure you know your content well.</p>
+</div>
+<div class="paragraph">
+<p>When you answer a flashcard&#8217;s question wrongly, you will encounter it again later on in the same <code>test session</code>. There is no need to do this manually - CardiBuddy does this for you too.</p>
+</div>
+<div class="paragraph">
+<p>Hence if you keep getting a question wrong, a <code>test session</code> can go on and on forever - unless you finally get it right, or you manually quit the <code>test session</code>!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="starting-a-test-session-for-a-deck-code-test-index-code"><a class="link" href="#starting-a-test-session-for-a-deck-code-test-index-code">Starting a test session for a deck: <code>test INDEX</code></a></h4>
+<div class="paragraph">
+<p>To start your <code>test session</code>, replace <code>INDEX</code> with the index number of the deck you wish to test. This number will be to the <em>left</em> of the title of your deck, when you are viewing all your decks as a list.</p>
+</div>
+<div class="paragraph">
+<p>What this command does:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A test session will immediately replace the normal deck and flashcard list view.</p>
+</li>
+<li>
+<p>The first question of the test session will be shown to you.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example Usage:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>test 1</code><br>
+Creates a test session for the 1st deck.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="to-answer-the-question-code-ans-your_answer-code"><a class="link" href="#to-answer-the-question-code-ans-your_answer-code">To answer the question: <code>ans YOUR_ANSWER</code></a></h4>
+<div class="paragraph">
+<p>Replace <code>YOUR ANSWER</code> with your answer to the displayed question.</p>
+</div>
+<div class="paragraph">
+<p>What this command does:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Submits your answer, and checks your answer against the flashcard&#8217;s stored answer</p>
+</li>
+<li>
+<p>Displays the result of your answer (CORRECT or WRONG)</p>
+</li>
+<li>
+<p>Displays your answer and the flashcard&#8217;s answer</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Example Usage:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ans CardiBuddy</code><br>
+To answer the question: "What is the name of this application?"</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="don-t-want-to-answer-skip-a-question-with-code-skip-code"><a class="link" href="#don-t-want-to-answer-skip-a-question-with-code-skip-code">Don&#8217;t want to answer? Skip a question with: <code>skip</code></a></h4>
+<div class="paragraph">
+<p>What this command does:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If you already know the answer to the question, and don&#8217;t want to waste your time answering it, just type <code>skip</code> to go to the next question.</p>
+</li>
+<li>
+<p>Your skipped flashcard will not impact your overall test score, and CardiBuddy will merely remove it from your current test session.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can use this command if either:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>You have not answered the question.</p>
+</li>
+<li>
+<p>You have answered the question, but you got it wrong.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>CardiBuddy will not let you use <code>skip</code> if you have already gotten that question correct.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="to-force-your-wrong-answer-to-be-marked-as-correct-code-force-code"><a class="link" href="#to-force-your-wrong-answer-to-be-marked-as-correct-code-force-code">To force your wrong answer to be marked as correct: <code>force</code></a></h4>
+<div class="paragraph">
+<p>What this command does:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>CardiBuddy&#8217;s uses automated marking to mark your answers. It takes your answer <em>word for word</em> when checking against the model answer stored in your flashcard.</p>
+</li>
+<li>
+<p>If your answer differs from the model answer, it will be marked as wrong.</p>
+</li>
+<li>
+<p>After submitting your answer, you will get to see the model answer and your answer, for you to compare them.</p>
+</li>
+<li>
+<p>If you feel that your answer still meets the question&#8217;s requirements, you can <code>force</code> your answer to be marked as correct.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="to-go-to-the-next-question-code-next-code"><a class="link" href="#to-go-to-the-next-question-code-next-code">To go to the next question: <code>next</code></a></h4>
+<div class="paragraph">
+<p>What this command does:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>After submitting your answer, type <code>next</code> to go to the next question (if there are any left to test).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can only type <code>next</code> once you have submitted your answer.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="quit-the-test-session-halfway-code-quit-code"><a class="link" href="#quit-the-test-session-halfway-code-quit-code">Quit the test session halfway: <code>quit</code></a></h4>
+<div class="paragraph">
+<p>What this command does:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows you to quit the current test session even before it is completed.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -173,211 +350,1214 @@
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="logictouimanager"><a class="link" href="#logictouimanager">LogicToUiManager</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This class serves as a bridge between relevant <code>Command</code> classes and the <code>Ui</code>, for use cases that do not update the <code>ObservableList</code>. It calls specific methods in the <code>MainWindow</code> class to modify the display to the user according to the <code>Command</code> executed.</p>
+</div>
+<div class="paragraph">
+<p>The <code>LogicToUiManager</code> object is created upon startup in the MainApp class, and there can exist only one instance of it throughout the use of CardiBuddy.</p>
+</div>
+<div class="paragraph">
+<p><strong>Commands that make use of <code>LogicToUiManager</code>:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>OpenCommand</code></p>
+</li>
+<li>
+<p><code>AddCommand</code></p>
+</li>
+<li>
+<p><code>DeleteDeckCommand</code></p>
+</li>
+<li>
+<p><code>DeleteCardCommand</code></p>
+</li>
+<li>
+<p><code>TestCommand</code></p>
+</li>
+<li>
+<p><code>AnswerCommand</code></p>
+</li>
+<li>
+<p><code>NextCommand</code></p>
+</li>
+<li>
+<p><code>QuitCommand</code></p>
+</li>
+<li>
+<p><code>SkipCommand</code></p>
+</li>
+<li>
+<p><code>SearchCardCommand</code></p>
+</li>
+<li>
+<p><code>StatisticsCommand</code></p>
+</li>
+<li>
+<p><code>ListCommand</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram illustrates how the <code>LogicToUiManager</code> can be used to modify the <code>MainWindow</code>, when CardiBuddy needs to display the flashcard question to the user during a <code>Test Session</code>. More details on <code>Test Session</code> in the section: <a href="#test-session">[test-session]</a>.</p>
+</div>
+<div class="paragraph">
+<p>This diagram is also an extension of the <a href="#test-sequence-diagram">sequence diagram</a> found in that section.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LogicToUiSequenceDiagram.png" alt="LogicToUiSequenceDiagram">
+</div>
+<div class="title">Figure 1. Sequence diagram showing how LogicToUiManager accesses the Ui to display a question during a test session.</div>
+</div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<h3 id="test-feature"><a class="link" href="#test-feature">Test feature</a></h3>
 <div class="sect3">
 <h4 id="design"><a class="link" href="#design">Design</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedCardiBuddy</code>.
-It extends <code>CardiBuddy</code> with an undo/redo history, stored internally as an <code>cardiBuddyStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
+<p>A flashcard application is not complete without the ability to test oneself.</p>
+</div>
+<div class="sect4">
+<h5 id="model-component"><a class="link" href="#model-component">Model Component</a></h5>
+<div class="paragraph">
+<p>The following classes can be found inside <em>cardibuddy/model/testsession</em>.</p>
+</div>
+<div class="paragraph">
+<p>The test feature revolves around 2 classes: <code>TestSession</code> and <code>TestResult</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>TestSession</code> stores the tested deck, retrieves the questions to be tested, acts according to the user&#8217;s commands and manages the <a href="#test-queue">test queue</a>.</p>
+</div>
+<div class="paragraph">
+<p><code>TestResult</code> stores the <code>Result</code> (explained below) of each <em>individual</em> test on a flashcard. That is, whether the flashcard was answered wrongly, correctly, or was skipped. <code>Result</code> is an enums class to store these 3 outcomes.</p>
+</div>
+<div class="paragraph">
+<p>Another enums class used is <code>AnswerType</code> which contains 3 answering options to display to the user - True/False, MCQ or Short Answer.</p>
+</div>
+<div class="paragraph">
+<p>To ensure good design practice, <code>Test Session</code> is not exposed to the other classes, but is instead called using the <code>ModelManager</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following figure is a more focused class diagram for the <em>cardibuddy/model/testsession</em> package, and displays important methods and fields used.</p>
+</div>
+<div class="paragraph">
+<p>Click <a href="#Design-Model">here</a> to view the full class diagram for the <code>Model</code> component, to see all the classes within <code>Model</code> interact.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/TestFocusClassDiagram.png" alt="TestFocusClassDiagram">
+</div>
+<div class="title">Figure 2. Class diagram for the test session package.</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="logic-component"><a class="link" href="#logic-component">Logic Component</a></h5>
+<div class="paragraph">
+<p>The test feature makes use of a suite of <code>Command</code> classes exclusive to a <code>TestSession</code>. These <code>Command</code> classes are part of the <strong>Logic</strong> component of CardiBuddy, and can be found within the <em>cardibuddy/logic/testsession</em> package.</p>
+</div>
+<div class="paragraph">
+<p>These commands allow the user to perform the following during a test session:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedCardiBuddy#commit()</code>&#8201;&#8212;&#8201;Saves the current CardiBuddy state in its history.</p>
+<p>The user will enter <code>test INDEX</code> to start the test session for the deck at the <code>INDEX</code>.</p>
 </li>
 <li>
-<p><code>VersionedCardiBuddy#undo()</code>&#8201;&#8212;&#8201;Restores the previous CardiBuddy state from its history.</p>
+<p>The user will enter <code>ans</code> followed by their answer to the question.</p>
 </li>
 <li>
-<p><code>VersionedCardiBuddy#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone CardiBuddy state from its history.</p>
+<p>The user can use the <code>next</code> command to view the next question.</p>
+</li>
+<li>
+<p>The user can choose to <code>skip</code> questions</p>
+</li>
+<li>
+<p>The user can choose to <code>quit</code> the session halfway</p>
+</li>
+<li>
+<p>The user can choose to <code>force</code> correct their answer if they wish to manually mark their answer as correct.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCardiBuddy()</code>, <code>Model#undoCardiBuddy()</code> and <code>Model#redoCardiBuddy()</code> respectively.</p>
+<p>The above commands can only be triggered when certain conditions are met. The following table provides a summary of all the <code>Command</code> classes related to the test feature, as well as the conditions for their execution and exceptions thrown when these conditions are not met.</p>
 </div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedCardiBuddy</code> will be initialized with the initial CardiBuddy state, and the <code>currentStatePointer</code> pointing to that single CardiBuddy state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState0.png" alt="UndoRedoState0">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th deck in the address book. The <code>delete</code> command calls <code>Model#commitCardiBuddy()</code>, causing the modified state of CardiBuddy, after the <code>delete 5</code> command executes, to be saved in the <code>cardiBuddyStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted CardiBuddy state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState1.png" alt="UndoRedoState1">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add d/cs2103T &#8230;&#8203;</code> to add a new deck. The <code>add</code> command also calls <code>Model#commitCardiBuddy()</code>, causing another modified CardiBuddy state to be saved into the <code>cardiBuddyStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState2.png" alt="UndoRedoState2">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<caption class="title">Table 1. Summary of Test Feature Commands</caption>
+<colgroup>
+<col style="width: 5%;">
+<col style="width: 5%;">
+<col style="width: 25%;">
+<col style="width: 60%;">
+<col style="width: 5%;">
+</colgroup>
+<thead>
 <tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitCardiBuddy()</code>, so the CardiBuddy state will not be saved into the <code>cardiBuddyStateList</code>.
-</td>
+<th class="tableblock halign-left valign-top">Command Class</th>
+<th class="tableblock halign-left valign-top">Corresponding user input</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Conditions</th>
+<th class="tableblock halign-left valign-top">Exceptions Thrown</th>
 </tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TestCommand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>test INDEX</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creates a <code>TestSession</code> for the specified deck at that index.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EmptyDeckException</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AnswerCommand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ans USER_ANSWER</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Submits the user&#8217;s answer to the <code>TestSession</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user has not already submitted an answer to the displayed question. The answer submitted must be comply with the question type (True False, MCQ, or Short Answer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AlreadyAnsweredException, IncorrectAnswerFormatException</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NextCommand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>next</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Displays the next question.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user must already have answered the question.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UnansweredQuestionException</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SkipCommand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>skip</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Skips the current question. Does not require the user to submit an answer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user must not have submitted a correct answer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AlreadyCorrectException</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QuitCommand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>quit</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quits the test session.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ForceCommand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>force</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Forces CardiBuddy to mark the user&#8217;s submitted answer as correct.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user must have submitted an incorrect answer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UnansweredQuestionException, AlreadyCorrectException</p></td>
+</tr>
+</tbody>
 </table>
 </div>
+</div>
+<div class="sect3">
+<h4 id="using-the-test-feature"><a class="link" href="#using-the-test-feature">Using the test feature</a></h4>
+<div class="sect4">
+<h5 id="starting-a-test-session"><a class="link" href="#starting-a-test-session">Starting a Test Session</a></h5>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the deck was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoCardiBuddy()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous CardiBuddy state, and restores the CardiBuddy to that state.</p>
+<p>Users can start a TestSession with a chosen <code>Deck</code>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>index</code> of the deck will be provided by the user and parsed by Cardi Buddy. A <code>TestSession</code> object containing the indicated <code>Deck</code> is created.</p>
+</li>
+<li>
+<p>The <code>TestSession</code> object creates a HashMap named <code>testResults</code> that contains <code>&lt;Flashcard, TestResult&gt;</code> for easy access to the testing history.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following is a UML Sequence Diagram of how a <code>TestSession</code> object is created when the <code>test INDEX</code> command is called:</p>
+</div>
+<div id="test-sequence-diagram" class="imageblock">
+<div class="content">
+<img src="../images/TestSequenceDiagram.png" alt="TestSequenceDiagram">
+</div>
+<div class="title">Figure 3. A sequence diagram illustrating the logic flow when a TestSession is created. The first question in the provided deck will immediately be displayed.</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="other-commands-included-in-the-test-feature"><a class="link" href="#other-commands-included-in-the-test-feature">Other commands included in the Test Feature</a></h5>
+<div class="paragraph">
+<p>Aside from <code>TestCommand</code> which is called to create the <code>TestSession</code>, there are specific commands that can be used only when a TestSession is running. These commands have certain <strong>conditions</strong> that must be met before they can be executed. Otherwise, they will throw a <code>CommandException</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, other application-wide commands, such as <code>add deck</code> and <code>delete card</code> will not be allowed to be executed during the TestSession.</p>
+</div>
+<div class="paragraph">
+<p>The following activity diagrams describe the logic flow.</p>
+</div>
+<div class="paragraph">
+<p>Note the following terminology used in the activity diagrams:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tr</code> stands for a <code>TestResult</code> object</p>
+</li>
+<li>
+<p><code>testResults</code> stands for a <code>HashMap&lt;Flashcard, TestResult&gt;</code> object stored in the <code>TestSession</code> object</p>
+</li>
+<li>
+<p><code>testQueue</code> is a <code>LinkedList&lt;Flashcard&gt;</code> that stores the queue of flashcards to be tested.</p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoState3.png" alt="UndoRedoState3">
+<img src="../images/TestSessionActivityDiagram.png" alt="TestSessionActivityDiagram">
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous CardiBuddy states to restore. The <code>undo</code> command uses <code>Model#canUndoCardiBuddy()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
+<div class="title">Figure 4. Overall activity diagram for the different use cases, extension cases omitted.</div>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCardiBuddy()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the CardiBuddy to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>cardiBuddyStateList.size() - 1</code>, pointing to the latest CardiBuddy state, then there are no undone CardiBuddy states to restore. The <code>redo</code> command uses <code>Model#canRedoCardiBuddy()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the CardiBuddy, such as <code>list</code>, will usually not call <code>Model#commitCardiBuddy()</code>, <code>Model#undoCardiBuddy()</code> or <code>Model#redoCardiBuddy()</code>. Thus, the <code>cardiBuddyStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState4.png" alt="UndoRedoState4">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCardiBuddy()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>CardiBuddyStateList</code>, all CardiBuddy states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add d/cs2103T &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
+<p>For more descriptive use case scenarios from a user&#8217;s perspective, please take a look at <a href="#use-cases">Use Cases</a>.</p>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-data-structure-for-the-test-queue"><a class="link" href="#aspect-data-structure-for-the-test-queue">Aspect: Data structure for the test queue</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire CardiBuddy.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
+<p><strong>Alternative 1</strong></p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Use an ArrayList to store the flashcards in the test queue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Makes use of the current data structure used to store flashcards in a list.</p>
+</li>
+<li>
+<p>Easy retrieval of flashcards at indices.</p>
+</li>
+<li>
+<p>Easy iteration of the flashcard list.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p>Cons:</p>
+</li>
+<li>
+<p>Possible difficulties in designing how flashcards should be retested.</p>
+</li>
+<li>
+<p>It is possible that we create a large ArrayList, and split it such that the first half is used for flashcards that have not been tested, and the second half be used for flashcards that are going to be retested.</p>
+</li>
+<li>
+<p>However, this approach is unnecessarily complicated, and uses excessive memory space.</p>
+</li>
+<li>
+<p>In addition, it is still difficult to check if flashcards have been tested before, which is part of our feature which counts the number of times a flashcard has been attempted.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice)</strong></p>
+</li>
+<li>
+<p>Use a LinkedList to store the flashcards in the test queue.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the deck being deleted).</p>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy insertion and removal of flashcards from the front and back of the queue, which is the main driver behind a test session.</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command is correct.</p>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Difficult to retrieve flashcards at indices, and check if a flashcard has been visited before</p>
+</li>
+<li>
+<p>In addition, other features of CardiBuddy require the easy retrieval of flashcards such as the get(index) method offered by ArrayList.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Why we went with this:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Logically, a test session will not be used as often as the other commands that entail retrieval of elements at a specific index, such as the <code>edit</code> command.</p>
+</li>
+<li>
+<p>There may be some overhead in converting the ArrayList used to a LinkedList, but our tests have showed minimal lag in starting a test session.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Workarounds:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>To still retain the ability to check if a flashcard has been visited before, we use a separate HashMap data structure that makes use of flashcards that have been visited before as keys.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A HashMap will also allow us to link a flashcard to a specific TestResult, and modify it as needed (such as when a user calls force correct on the flashcard).</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p><br></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="aspect-how-to-store-the-results-of-each-individual-test-on-a-flashcard"><a class="link" href="#aspect-how-to-store-the-results-of-each-individual-test-on-a-flashcard">Aspect: How to store the results of each individual test on a flashcard</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of CardiBuddy states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+<p><strong>Alternative 1</strong></p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedCardiBuddy</code>.</p>
+<p>Use a <code>Result</code> enums to indicate if the question was correct, wrong or skipped</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>An enums class improves code readability, and ensures that there are only 3 possible results linked to each flashcard.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p>Cons:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+<p>Too simplistic and does not give room for further enhancements as described below.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p><strong>Alternative 2 (current choice)</strong></p>
+</li>
+<li>
+<p>Use a custom <code>TestResult</code> class that stores the user answer, as well as the model flashcard answer</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Provides room for further customisation, such as recording the number of attempts on the flashcard, which alternative 1 was unable to achieve.</p>
+</li>
+<li>
+<p>More Object-Oriented Design, and keeps <code>TestSession</code> from getting too cluttered.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Higher chance for error as more code and methods needed to be written.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-when-to-replace-the-code-current-code-variable-holding-the-latest-flashcard-that-was-tested"><a class="link" href="#aspect-when-to-replace-the-code-current-code-variable-holding-the-latest-flashcard-that-was-tested">Aspect: When to replace the <code>current</code> variable holding the latest flashcard that was tested</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1</strong></p>
+</li>
+<li>
+<p>Move on to the next question, hence replacing <code>current</code>, as soon as the user submits their answer.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Simple and easy to implement</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This would have been fine in the initial stages, but would not work after further enhancements (<code>skip</code>, <code>force</code>) were added.</p>
+</li>
+<li>
+<p>The 2 mentioned enhancements require modifying of the <code>testResults</code> HashMap, and hence require the flashcard they are being used on as a key to retrieve and modify the TestResult.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice)</strong></p>
+</li>
+<li>
+<p>Only replace <code>current</code> with the next flashcard when <code>next</code> or <code>skip</code> is used.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>These 2 commands are the ones that trigger the displaying of the next question in the queue to the user.</p>
+</li>
+<li>
+<p>This ensures that should there be a need to retrieve the current flashcard, such as in modifying the <code>testResults</code> HashMap as well as checking the flashcard&#8217;s <code>CardType</code> (image or normal) and getting its <code>AnswerType</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This complicates the code, and may possibly be difficult to understand for another developer.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Workarounds:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Do our best to document the test feature in this Developer&#8217;s Guide, and supplement it with activity diagrams and other explanations to help the reader better understand the workings of this feature.
+== User Stories</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use CardiBuddy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student currently taking cs2105</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit my flashcards</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change or add extra information whenever I learn something new</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student practicing for my finals</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create test sessions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">repeatedly test myself on the same content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student studying for finals</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see the flashcards that I got correct during test sessions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what content I am more familiar with</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student studying for finals</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">test flashcards that I got wrong more often during test sessions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">better remember unfamiliar content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student taking many modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create new decks to contain my flashcards</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">organise my notes and modules</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who is very busy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily search for a deck that I want to access</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">more efficient with my time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who likes to keep things organised</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete decks of the modules that I am no longer taking</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be more organised</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student with many content-heavy modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily search for any flashcards that are relevant to my modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">more efficient with my time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">revisit previous test sessions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">continue my revision</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set priority levels for the flashcards I am less familiar with</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">it will appear more often during future test sessions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tag flashcards with different topics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">filter and revise the topics that I am less familiar with</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student taking timed examinations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">time myself during a test session</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">better prepared to think under timed conditions</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who likes designing and aesthetics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">customise the colours and fonts of the flashcards</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tweak the theme to my preferences</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who owns multiple devices</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">access flashcards on all my devices</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">revise them while travelling</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who receives flashcard images from her friends</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">drag and drop the images into the application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">conveniently create new flashcards</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student with short attention span</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">play memory games in the application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remember my key concepts better</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">competitive student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">graded on a bell-curve with other Computer Science students who are using the same application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see how well I have revised compared to the rest</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit other people&#8217;s decks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fill in any gaps in my knowledge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student taking modules with other friends</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">collaborate on decks with other users</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">help each other revise the content</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who likes to store content to study on her phone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">convert the flashcards to images</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">so that I can refer to them easily</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who likes to study with her friends</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">send my friends flashcards that I created</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">share my flashcards with them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student who needs incentive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">earn rewards</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">will be motivated to use the flashcards more</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student with a short attention span</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add animations to my flashcards</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remain entertained</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix A: Use Cases</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>(For all use cases below, the <strong>System</strong> is the <code>CardiBuddy</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+</div>
+<h3 id="test-sessions" class="discrete">Test Sessions</h3>
+<div class="sect2">
+<h3 id="use-case-starting-a-test-session"><a class="link" href="#use-case-starting-a-test-session">Use case: Starting a test session</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to start a test session with a chosen deck.</p>
+</li>
+<li>
+<p>CardiBuddy displays the test session page to the user, with the first question displayed.</p>
+</li>
+<li>
+<p>CardiBuddy awaits the user&#8217;s answer.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The given index is invalid</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy shows an error message</p>
+</li>
+<li>
+<p>ii. Use case resumes at step 1.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. The deck is empty</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-submitting-an-answer"><a class="link" href="#use-case-submitting-an-answer">Use case: Submitting an answer</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User submits their answer to a question not tested before.</p>
+</li>
+<li>
+<p>CardiBuddy gets the result of the user&#8217;s answer. The user answered the question correctly.</p>
+</li>
+<li>
+<p>CardiBuddy creates a new record for this flashcard to save this correct result.</p>
+</li>
+<li>
+<p>CardiBuddy displays the result to the user.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Inclusions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The current flashcard has been answered before.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy modifies its records by increasing the number of tries logged for this flashcard.</p>
+</li>
+<li>
+<p>ii. Use case resumes at step 3.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The user got the question wrong.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy creates a new record for this flashcard to save this wrong result.</p>
+</li>
+<li>
+<p>ii. CardiBuddy appends this flashcard to the back of the queue for retesting later.</p>
+</li>
+<li>
+<p>iii. Use case resumes at step 4.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-skipping-a-question"><a class="link" href="#use-case-skipping-a-question">Use case: Skipping a question</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to skip the current question.</p>
+</li>
+<li>
+<p>CardiBuddy modifies its records to show that this flashcard was skipped</p>
+</li>
+<li>
+<p>CardiBuddy removes the next flashcard in the queue.</p>
+</li>
+<li>
+<p>CardiBuddy displays the question on this flashcard to the user.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user has already answered this question correctly</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy shows an error message and prompts user to type 'next' instead</p>
+</li>
+<li>
+<p>ii. Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Inclusions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The user has already answered this question wrongly</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy removes this flashcard, that was set to be retested, from the back of the queue</p>
+</li>
+<li>
+<p>ii. Use case resumes at step 2.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-forcing-a-wrong-answer-to-be-marked-correct"><a class="link" href="#use-case-forcing-a-wrong-answer-to-be-marked-correct">Use case: Forcing a wrong answer to be marked correct</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to force their answer to be marked as correct</p>
+</li>
+<li>
+<p>CardiBuddy acknowledges the user&#8217;s request and changes the recorded result for this flashcard
++ Use case ends.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user has not answered the question yet</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy shows an error message and tells the user to answer the question first, or skip it</p>
+</li>
+<li>
+<p>ii. Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The user is trying to force correct their already correct answer</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy shows an error message and prompts the user to type 'next'</p>
+</li>
+<li>
+<p>ii. Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-going-to-the-next-question"><a class="link" href="#use-case-going-to-the-next-question">Use case: Going to the next question</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to go to the next question.</p>
+</li>
+<li>
+<p>CardiBuddy removes the next flashcard in the queue and displays its question to the user.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Inclusions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. There are no more flashcards in the queue</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy ends the test session, and returns the user to the home page</p>
+</li>
+<li>
+<p>ii. Use case ends.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The user has not answered the question yet</p>
+<div class="ulist">
+<ul>
+<li>
+<p>i. CardiBuddy shows an error message and prompts the user to answer the question or skip it.</p>
+</li>
+<li>
+<p>ii. Use case ends.
+== Product Scope
+<strong>Target users</strong>: NUS School of Computing students</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Target user profile</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>enrolled in content-heavy modules in university</p>
+</li>
+<li>
+<p>has a need for an effective way to revise and memorise content</p>
+</li>
+<li>
+<p>values efficiency</p>
+</li>
+<li>
+<p>prefer desktop apps over other types</p>
+</li>
+<li>
+<p>able to type quickly</p>
+</li>
+<li>
+<p>generally prefers typing over mouse input</p>
+</li>
+<li>
+<p>is reasonably comfortable using CLI apps</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Value proposition</strong>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Time efficient</p>
+<div class="ulist">
+<ul>
+<li>
+<p>It is easier for fast typers to add and delete flashcards</p>
+</li>
+<li>
+<p>Unlike regular GUI apps in the market, minimal navigation and clicking is required</p>
+</li>
+<li>
+<p>Faster loading time for CLI applications</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>No steep learning curve</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Command words are intuitive and uncomplicated</p>
+</li>
+<li>
+<p>Easy for computing students to learn and remember</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Retests cards</p>
+<div class="ulist">
+<ul>
+<li>
+<p>More tests for flashcards that the student got wrong</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Flexible answering</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Students can paraphrase their answers, and manually evaluate if their answers are correct</p>
+</li>
+<li>
+<p>No need for word-for-word answers</p>
+</li>
+<li>
+<p>Accommodates different module types and scenarios eg. having to describe a situation, or a diagram</p>
+</li>
+<li>
+<p>Paraphrasing is also a much more effective way to learn, compared to rote memorisation
+== Product Survey</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Quizlet</strong></p>
+</div>
+<div class="paragraph">
+<p>Author: Andrew Sutherland</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User can create an account</p>
+</li>
+<li>
+<p>Clean user interface</p>
+</li>
+<li>
+<p>Ability to search for decks created by other users</p>
+</li>
+<li>
+<p>Ability to turn flashcard questions into 3 different kinds of questions: True and False, MCQ and short answer</p>
+</li>
+<li>
+<p>3 different ways to test self: Test, Write and Swipe/Flip</p>
+</li>
+<li>
+<p>Ability to play a timed matching game to match questions to their answers</p>
+</li>
+<li>
+<p>"Don&#8217;t know" option if the user does not know the answer to the question.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Confusing options for tests: "write", "test" and "swipe/flip"</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Both "write" and "test" tests the user on flashcard content.</p>
+</li>
+<li>
+<p>However, "write" allows the user to force correct on the flashcard while "test" only allows the user to skip the question.</p>
+</li>
+<li>
+<p>Hence answers need to be written word for word to be marked as correct when using "test"</p>
+</li>
+<li>
+<p>The "swipe/flip" test option is not displayed together with the write and test options, and user has to navigate around before stumbling onto it.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>These similar options may overwhelm the user with too much choice.</p>
+</li>
+<li>
+<p>Naming of the options are also not clear (eg. "write")</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Scrolling view of flashcards at the end of test sessions, instead of a list view of the cards and their outcomes.</p>
+</li>
+<li>
+<p>Difficult to add a new flashcard to an existing deck</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Had to explore many options before finding a "&#8230;&#8203;" button at the top right hand corner, which displayed a dropdown list of options for the set. User has to select edit set, before being able to</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>More confusing naming</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Statistics (not seen, familiar, mastered for flashcards are nested under the option "Learn"
+== Non Functional Requirements</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
+</li>
+<li>
+<p>Should be able to hold up to 100 decks without a noticeable sluggishness in performance for typical usage.</p>
+</li>
+<li>
+<p>Each deck should be able to hold up to 100 flashcards without a noticeable sluggishness in performance for typical usage.</p>
+</li>
+<li>
+<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+</li>
+</ol>
+</div>
 </li>
 </ul>
 </div>
@@ -386,6 +1566,4 @@ If the <code>currentStatePointer</code> is at index <code>cardiBuddyStateList.si
 </div>
 </div>
 </div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:14:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:24:53 UTC</div></div></div></body></html>

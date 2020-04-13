@@ -118,7 +118,10 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong>Flashcards</strong> are cards that contain revision materials, specifically a question and an answer.</p>
 </li>
 <li>
-<p><strong>Statistics</strong> is the numererical, summarized version of your data, based on your test history. Your statistics can serve as a guideline for you to decide which areas you need to work on, and which areas you are familiar with.</p>
+<p><strong>Test Session</strong> emulates how you would test yourself with a deck of flashcards in real life. You get to view each flashcard in a chosen deck one by one, question first. Once you have decided on your answer to it, you can 'flip' the flashcard and see the answer. See <a href="#testing">here</a> for more details on using test sessions.</p>
+</li>
+<li>
+<p><strong>Statistics</strong> is the numerical, summarized version of your data, based on your test history. Your statistics can serve as a guideline for you to decide which areas you need to work on, and which areas you are familiar with.</p>
 </li>
 </ul>
 </div>
@@ -709,6 +712,8 @@ Displays decks with both the tags <code>hard</code> and <code>coremodule</code>.
 </div>
 <div class="sect2">
 <h3 id="testing"><a class="link" href="#testing">3.10. Testing</a></h3>
+<div class="sect3">
+<h4 id="overview"><a class="link" href="#overview">3.10.1. Overview</a></h4>
 <div class="paragraph">
 <p>Of course, you did not create all those decks and flashcards just so you can admire them! It&#8217;s time to get your revision on. Start a <code>test session</code> for a deck to begin testing yourself!</p>
 </div>
@@ -718,8 +723,12 @@ Displays decks with both the tags <code>hard</code> and <code>coremodule</code>.
 <div class="paragraph">
 <p>The difference here is that you do not need to manually keep track of how many flashcards you got right and wrong&#8201;&#8212;&#8201;CardiBuddy does all that for you!</p>
 </div>
+<div class="paragraph">
+<p>In addition, you will also get to see a summary of how you&#8217;ve done at the end of your <code>test session</code>.</p>
+</div>
+</div>
 <div class="sect3">
-<h4 id="retesting"><a class="link" href="#retesting">3.10.1. Retesting</a></h4>
+<h4 id="retesting"><a class="link" href="#retesting">3.10.2. Retesting</a></h4>
 <div class="paragraph">
 <p>A <code>test session</code> in CardiBuddy is special - it includes a <strong>retesting</strong> feature to make sure you know your content well.</p>
 </div>
@@ -727,11 +736,11 @@ Displays decks with both the tags <code>hard</code> and <code>coremodule</code>.
 <p>When you answer a flashcard&#8217;s question wrongly, you will encounter it again later on in the same <code>test session</code>. There is no need to do this manually - CardiBuddy does this for you too.</p>
 </div>
 <div class="paragraph">
-<p>Hence if you keep getting a question wrong, a <code>test session</code> can go on and on forever - unless you finally get it right, or you quit the test session!</p>
+<p>Hence if you keep getting a question wrong, a <code>test session</code> can go on and on forever - unless you finally get it right, or you manually quit the <code>test session</code>!</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="starting-a-test-session-for-a-deck-code-test-index-code"><a class="link" href="#starting-a-test-session-for-a-deck-code-test-index-code">3.10.2. Starting a test session for a deck: <code>test INDEX</code></a></h4>
+<h4 id="starting-a-test-session-for-a-deck-code-test-index-code"><a class="link" href="#starting-a-test-session-for-a-deck-code-test-index-code">3.10.3. Starting a test session for a deck: <code>test INDEX</code></a></h4>
 <div class="paragraph">
 <p>To start your <code>test session</code>, replace <code>INDEX</code> with the index number of the deck you wish to test. This number will be to the <em>left</em> of the title of your deck, when you are viewing all your decks as a list.</p>
 </div>
@@ -744,7 +753,7 @@ Displays decks with both the tags <code>hard</code> and <code>coremodule</code>.
 <p>A test session will immediately replace the normal deck and flashcard list view.</p>
 </li>
 <li>
-<p>The first question of the test session will be displayed.</p>
+<p>The first question of the test session will be shown to you.</p>
 </li>
 </ul>
 </div>
@@ -761,7 +770,7 @@ Creates a test session for the 1st deck.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="to-answer-the-question-code-ans-your_answer-code"><a class="link" href="#to-answer-the-question-code-ans-your_answer-code">3.10.3. To answer the question: <code>ans YOUR_ANSWER</code></a></h4>
+<h4 id="to-answer-the-question-code-ans-your_answer-code"><a class="link" href="#to-answer-the-question-code-ans-your_answer-code">3.10.4. To answer the question: <code>ans YOUR_ANSWER</code></a></h4>
 <div class="paragraph">
 <p>Replace <code>YOUR ANSWER</code> with your answer to the displayed question.</p>
 </div>
@@ -794,7 +803,7 @@ To answer the question: "What is the name of this application?"</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="don-t-want-to-answer-skip-a-question-with-code-skip-code"><a class="link" href="#don-t-want-to-answer-skip-a-question-with-code-skip-code">3.10.4. Don&#8217;t want to answer? Skip a question with: <code>skip</code></a></h4>
+<h4 id="don-t-want-to-answer-skip-a-question-with-code-skip-code"><a class="link" href="#don-t-want-to-answer-skip-a-question-with-code-skip-code">3.10.5. Don&#8217;t want to answer? Skip a question with: <code>skip</code></a></h4>
 <div class="paragraph">
 <p>What this command does:</p>
 </div>
@@ -833,7 +842,7 @@ To answer the question: "What is the name of this application?"</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="to-force-your-wrong-answer-to-be-marked-as-correct-code-force-code"><a class="link" href="#to-force-your-wrong-answer-to-be-marked-as-correct-code-force-code">3.10.5. To force your wrong answer to be marked as correct: <code>force</code></a></h4>
+<h4 id="to-force-your-wrong-answer-to-be-marked-as-correct-code-force-code"><a class="link" href="#to-force-your-wrong-answer-to-be-marked-as-correct-code-force-code">3.10.6. To force your wrong answer to be marked as correct: <code>force</code></a></h4>
 <div class="paragraph">
 <p>What this command does:</p>
 </div>
@@ -855,7 +864,7 @@ To answer the question: "What is the name of this application?"</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="to-go-to-the-next-question-code-next-code"><a class="link" href="#to-go-to-the-next-question-code-next-code">3.10.6. To go to the next question: <code>next</code></a></h4>
+<h4 id="to-go-to-the-next-question-code-next-code"><a class="link" href="#to-go-to-the-next-question-code-next-code">3.10.7. To go to the next question: <code>next</code></a></h4>
 <div class="paragraph">
 <p>What this command does:</p>
 </div>
@@ -878,7 +887,7 @@ To answer the question: "What is the name of this application?"</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="quit-the-test-session-halfway-code-quit-code"><a class="link" href="#quit-the-test-session-halfway-code-quit-code">3.10.7. Quit the test session halfway: <code>quit</code></a></h4>
+<h4 id="quit-the-test-session-halfway-code-quit-code"><a class="link" href="#quit-the-test-session-halfway-code-quit-code">3.10.8. Quit the test session halfway: <code>quit</code></a></h4>
 <div class="paragraph">
 <p>What this command does:</p>
 </div>
@@ -1115,4 +1124,4 @@ e.g. <code>test 1</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:14:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:24:53 UTC</div></div></div></body></html>

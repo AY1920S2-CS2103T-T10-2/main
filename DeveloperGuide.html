@@ -46,6 +46,7 @@
 <li><a href="#use-case-skipping-a-question">C.3. Use case: Skipping a question</a></li>
 <li><a href="#use-case-forcing-a-wrong-answer-to-be-marked-correct">C.4. Use case: Forcing a wrong answer to be marked correct</a></li>
 <li><a href="#use-case-going-to-the-next-question">C.5. Use case: Going to the next question</a></li>
+<li><a href="#use-case-add-a-new-deck">C.6. Use case: Add a new deck</a></li>
 </ul>
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
@@ -173,6 +174,9 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
+</div>
+<div class="paragraph">
+<p><br></p>
 </div>
 </div>
 <div class="sect2">
@@ -805,6 +809,9 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 <div class="paragraph">
 <p>Due to the similarities in method bodies of the different answers and cards classes, a <code>Card</code> and <code>Answer</code> abstract class was used instead of an interface.<br></p>
 </div>
+<div class="paragraph">
+<p><br></p>
+</div>
 </div>
 </div>
 </div>
@@ -836,7 +843,16 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 <p>To ensure good design practice, <code>Test Session</code> is not exposed to the other classes, but is instead called using the <code>ModelManager</code>.</p>
 </div>
 <div class="paragraph">
-<p>Click <a href="#Design-Model">here</a> to view the class diagram for the <code>Model</code> component, to see how the above classes interact with other classes within <code>Model</code>.</p>
+<p>The following figure is a more focused class diagram for the <em>cardibuddy/model/testsession</em> package, and displays important methods and fields used.</p>
+</div>
+<div class="paragraph">
+<p>Click <a href="#Design-Model">here</a> to view the full class diagram for the <code>Model</code> component, to see all the classes within <code>Model</code> interact.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TestFocusClassDiagram.png" alt="TestFocusClassDiagram">
+</div>
+<div class="title">Figure 10. Class diagram for the test session package.</div>
 </div>
 </div>
 <div class="sect4">
@@ -902,8 +918,8 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 <td class="tableblock halign-left valign-top"><p class="tableblock">AnswerCommand</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ans USER_ANSWER</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Submits the user&#8217;s answer to the <code>TestSession</code>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The user has not already submitted an answer to the displayed question.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AlreadyAnsweredException</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The user has not already submitted an answer to the displayed question. The answer submitted must be comply with the question type (True False, MCQ, or Short Answer)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AlreadyAnsweredException, IncorrectAnswerFormatException</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NextCommand</p></td>
@@ -961,7 +977,7 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 <div class="content">
 <img src="images/TestSequenceDiagram.png" alt="TestSequenceDiagram">
 </div>
-<div class="title">Figure 10. A sequence diagram illustrating the logic flow when a TestSession is created. The first question in the provided deck will immediately be displayed.</div>
+<div class="title">Figure 11. A sequence diagram illustrating the logic flow when a TestSession is created. The first question in the provided deck will immediately be displayed.</div>
 </div>
 </div>
 <div class="sect4">
@@ -995,11 +1011,281 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 <div class="content">
 <img src="images/TestSessionActivityDiagram.png" alt="TestSessionActivityDiagram">
 </div>
-<div class="title">Figure 11. Overall activity diagram for the different use cases, extension cases omitted.</div>
+<div class="title">Figure 12. Overall activity diagram for the different use cases, extension cases omitted.</div>
 </div>
 <div class="paragraph">
-<p>For more descriptive use case scenarios from a user perspectives, please take a look at <a href="#use-cases">Appendix C, <em>Use Cases</em></a>.</p>
+<p>For more descriptive use case scenarios from a user&#8217;s perspective, please take a look at <a href="#use-cases">Appendix C, <em>Use Cases</em></a>.</p>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.3. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-for-the-test-queue"><a class="link" href="#aspect-data-structure-for-the-test-queue">Aspect: Data structure for the test queue</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1</strong></p>
+</li>
+<li>
+<p>Use an ArrayList to store the flashcards in the test queue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Makes use of the current data structure used to store flashcards in a list.</p>
+</li>
+<li>
+<p>Easy retrieval of flashcards at indices.</p>
+</li>
+<li>
+<p>Easy iteration of the flashcard list.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+</li>
+<li>
+<p>Possible difficulties in designing how flashcards should be retested.</p>
+</li>
+<li>
+<p>It is possible that we create a large ArrayList, and split it such that the first half is used for flashcards that have not been tested, and the second half be used for flashcards that are going to be retested.</p>
+</li>
+<li>
+<p>However, this approach is unnecessarily complicated, and uses excessive memory space.</p>
+</li>
+<li>
+<p>In addition, it is still difficult to check if flashcards have been tested before, which is part of our feature which counts the number of times a flashcard has been attempted.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice)</strong></p>
+</li>
+<li>
+<p>Use a LinkedList to store the flashcards in the test queue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy insertion and removal of flashcards from the front and back of the queue, which is the main driver behind a test session.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Difficult to retrieve flashcards at indices, and check if a flashcard has been visited before</p>
+</li>
+<li>
+<p>In addition, other features of CardiBuddy require the easy retrieval of flashcards such as the get(index) method offered by ArrayList.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Why we went with this:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Logically, a test session will not be used as often as the other commands that entail retrieval of elements at a specific index, such as the <code>edit</code> command.</p>
+</li>
+<li>
+<p>There may be some overhead in converting the ArrayList used to a LinkedList, but our tests have showed minimal lag in starting a test session.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Workarounds:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>To still retain the ability to check if a flashcard has been visited before, we use a separate HashMap data structure that makes use of flashcards that have been visited before as keys.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>A HashMap will also allow us to link a flashcard to a specific TestResult, and modify it as needed (such as when a user calls force correct on the flashcard).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-how-to-store-the-results-of-each-individual-test-on-a-flashcard"><a class="link" href="#aspect-how-to-store-the-results-of-each-individual-test-on-a-flashcard">Aspect: How to store the results of each individual test on a flashcard</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1</strong></p>
+</li>
+<li>
+<p>Use a <code>Result</code> enums to indicate if the question was correct, wrong or skipped</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>An enums class improves code readability, and ensures that there are only 3 possible results linked to each flashcard.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Too simplistic and does not give room for further enhancements as described below.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice)</strong></p>
+</li>
+<li>
+<p>Use a custom <code>TestResult</code> class that stores the user answer, as well as the model flashcard answer</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Provides room for further customisation, such as recording the number of attempts on the flashcard, which alternative 1 was unable to achieve.</p>
+</li>
+<li>
+<p>More Object-Oriented Design, and keeps <code>TestSession</code> from getting too cluttered.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Higher chance for error as more code and methods needed to be written.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><br></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="aspect-when-to-replace-the-code-current-code-variable-holding-the-latest-flashcard-that-was-tested"><a class="link" href="#aspect-when-to-replace-the-code-current-code-variable-holding-the-latest-flashcard-that-was-tested">4.3.4. Aspect: When to replace the <code>current</code> variable holding the latest flashcard that was tested</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1</strong></p>
+</li>
+<li>
+<p>Move on to the next question, hence replacing <code>current</code>, as soon as the user submits their answer.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Simple and easy to implement</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This would have been fine in the initial stages, but would not work after further enhancements (<code>skip</code>, <code>force</code>) were added.</p>
+</li>
+<li>
+<p>The 2 mentioned enhancements require modifying of the <code>testResults</code> HashMap, and hence require the flashcard they are being used on as a key to retrieve and modify the TestResult.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (current choice)</strong></p>
+</li>
+<li>
+<p>Only replace <code>current</code> with the next flashcard when <code>next</code> or <code>skip</code> is used.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>These 2 commands are the ones that trigger the displaying of the next question in the queue to the user.</p>
+</li>
+<li>
+<p>This ensures that should there be a need to retrieve the current flashcard, such as in modifying the <code>testResults</code> HashMap as well as checking the flashcard&#8217;s <code>CardType</code> (image or normal) and getting its <code>AnswerType</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This complicates the code, and may possibly be difficult to understand for another developer.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Workarounds:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Do our best to document the test feature in this Developer&#8217;s Guide, and supplement it with activity diagrams and other explanations to help the reader better understand the workings of this feature.
+<br></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1057,6 +1343,9 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 </div>
 <div class="paragraph">
 <p>Each time the user does something that can be tracked, it updates both the universal <code>Statistics</code> and the <code>Statistics</code> of the <code>Deck</code> that he or she is using. The call to update both statistics is done simultaneously in the <code>CardiBuddy</code> model for adding/removing decks/cards, or in <code>ModelManager</code> for finishing a <code>TestSession</code>.</p>
+</div>
+<div class="paragraph">
+<p><br></p>
 </div>
 </div>
 </div>
@@ -1154,10 +1443,10 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 <p>prefer desktop apps over other types</p>
 </li>
 <li>
-<p>can type fast</p>
+<p>able to type quickly</p>
 </li>
 <li>
-<p>prefers typing over mouse input</p>
+<p>generally prefers typing over mouse input</p>
 </li>
 <li>
 <p>is reasonably comfortable using CLI apps</p>
@@ -1199,7 +1488,7 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 </div>
 </li>
 <li>
-<p>Prioritises cards</p>
+<p>Retests cards</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1399,9 +1688,6 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -1705,9 +1991,10 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="adding-decks-and-flashcards"><a class="link" href="#adding-decks-and-flashcards">C.5.1. Adding Decks and Flashcards</a></h4>
-<h3 id="use-case-add-a-new-deck" class="discrete">Use case: Add a new deck</h3>
+<h4 id="adding-decks-and-flashcards" class="discrete">Adding Decks and Flashcards</h4>
+</div>
+<div class="sect2">
+<h3 id="use-case-add-a-new-deck"><a class="link" href="#use-case-add-a-new-deck">C.6. Use case: Add a new deck</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1773,7 +2060,6 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 </div>
 </div>
 </div>
-</div>
 <div class="sect1">
 <h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
 <div class="sectionbody">
@@ -1792,9 +2078,6 @@ A sample command would be <code>add q/How does one go about solving recursion pr
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -2038,7 +2321,7 @@ Expected: The most recent window size and location is retained.</p>
 Expected: First deck is deleted from the list. Details of the deleted deck shown in the status message. Timestamp in the status bar is updated.</p>
 </li>
 <li>
-<p>Test case: <code>delete decl 0</code><br>
+<p>Test case: <code>delete deck 0</code><br>
 Expected: No deck is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
@@ -2075,4 +2358,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 14:14:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2020-04-13 15:24:53 UTC</div></div></div></body></html>
