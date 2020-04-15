@@ -26,7 +26,7 @@ Refer to the guide <<SettingUp#, here>>.
 === Architecture
 
 .Architecture Diagram
-image::ArchitectureDiagram.png[]
+image::ArchitectureDiagram.png[width=400]
 
 The *_Architecture Diagram_* given above explains the high-level design of the App. Given below is a quick overview of each component.
 
@@ -139,7 +139,7 @@ The following sequence diagram illustrates how the `LogicToUiManager` can be use
 This diagram is also an extension of the <<test-sequence-diagram, sequence diagram>> found in that section.
 
 .Sequence diagram showing how LogicToUiManager accesses the Ui to display a question during a test session.
-image::LogicToUiSequenceDiagram.png[]
+image::LogicToUiSequenceDiagram.png[width=400]
 // end::ash-logictoui[]
 
 
@@ -147,7 +147,7 @@ image::LogicToUiSequenceDiagram.png[]
 === Model component
 
 .Structure of the Model Component
-image::ModelClassDiagram.png[]
+image::ModelClassDiagram.png[width=600]
 
 *API* : link:{repoURL}/src/main/java/cardibuddy/model/Model.java[`Model.java`]
 
@@ -162,7 +162,7 @@ The `Model`,
 === Storage component
 
 .Structure of the Storage Component
-image::StorageClassDiagram.png[]
+image::StorageClassDiagram.png[width=400]
 
 *API* : link:{repoURL}/src/main/java/cardibuddy/storage/Storage.java[`Storage.java`]
 
@@ -336,7 +336,7 @@ A sample command was mentioned in the example for `Flashcard` above: `add q/Is d
 
 The following sequence diagram shows how the `ParserUtil` class creates a `TfAnswer` answer based on the given sample command:
 
-image::ParserUtilTfDiagram.png[]
+image::ParserUtilTfDiagram.png[width=400]
 
 ===== McqAnswer
 For an `McqAnswer` to be associated with a `Card`, the user will have to enter
@@ -355,11 +355,9 @@ A sample command would be `add q/How does one go about solving recursion problem
 
 The following sequence diagram shows how the `ParserUtil` class creates a `ShortAnswer` answer based on the given sample command:
 
-image::ParserUtilShortAnsDiagram.png[]
-// end::jingying[]
+image::ParserUtilShortAnsDiagram.png[width=500]
 
 ==== Design Considerations
-// tag::design[]
 ===== Aspect: How to implement the different card and answer types
 
 * **Alternative 1 (current choice):** Using an abstract class to contain general functionalities.
